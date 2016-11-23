@@ -62,7 +62,7 @@ static NSString *rightHeader = @"rightHeader";
 
 - (void)setupUI{
     self.navigationController.navigationBar.translucent = NO;
-   
+    
     self.navigationItem.title = @"闪送超市";
     self.view.backgroundColor = [UIColor grayColor];
     self.navigationController.navigationBar.translucent = NO;
@@ -71,6 +71,11 @@ static NSString *rightHeader = @"rightHeader";
     [self addArrageView];
     [self addMyView];
     //    [self addTableView];
+}
+
+//MARK:页面即将显示时刷新右侧数据
+- (void)viewWillAppear:(BOOL)animated{
+    [_rightTableView reloadData];
 }
 
 //MARK:加载数据
@@ -98,7 +103,7 @@ static NSString *rightHeader = @"rightHeader";
     
     //获取热搜关键字
     [manager getSearchKeyWordParameters:@(6) CompleteBlock:^(NSDictionary *dicH) {
- 
+        
         _searchKeyWord = dicH[@"hotquery"];
     }];
     
@@ -111,9 +116,9 @@ static NSString *rightHeader = @"rightHeader";
     _rightDataList = _goodsDataDic[_leftDataList[defaultSelect].idKey];
     //右侧view数据默认设置为综合排序
     _rightDataList = [_rightDataList sortedArrayUsingComparator:^NSComparisonResult(AFBCommonGoodsModel * obj1, AFBCommonGoodsModel * obj2) {
-        return [obj1.product_id integerValue] > [obj2.product_id integerValue];
+        return [obj1.rangeID integerValue] > [obj2.rangeID integerValue];
     }];
-
+    
     
     //刷新两侧的tableView数据
     [_leftTableView reloadData];
@@ -192,16 +197,16 @@ static NSString *rightHeader = @"rightHeader";
 //MARK:切换排序方法
 - (void)clickArrangeControl:(AFBOrderCommonControlBut *)sender{
     
-
+    
     switch (sender.arrangeType) {
         case ArrangeType_Noum: //综合排序
             
             _rightDataList = [_rightDataList sortedArrayUsingComparator:^NSComparisonResult(AFBCommonGoodsModel * obj1, AFBCommonGoodsModel * obj2) {
-                return [obj1.product_id integerValue] > [obj2.product_id integerValue];
+                return [obj1.rangeID integerValue] > [obj2.rangeID integerValue];
             }];
             break;
         case ArrangeType_Price:  //价格排序
-          
+            
             if (_arrangeView.priceBut.isUP) {
                 _rightDataList = [_rightDataList sortedArrayUsingComparator:^NSComparisonResult(AFBCommonGoodsModel * obj1, AFBCommonGoodsModel * obj2) {
                     return [obj1.partner_price floatValue] > [obj2.partner_price floatValue];
@@ -249,7 +254,7 @@ static NSString *rightHeader = @"rightHeader";
     //注册cell
     [leftTableView registerClass:[AFBOrderLeftCell class] forCellReuseIdentifier:orderLeftCellID];
     [rightTableView registerNib:[UINib nibWithNibName:@"AFBOrderRightCell" bundle:nil] forCellReuseIdentifier:orderRightCellID];
-
+    
 }
 
 
@@ -265,7 +270,7 @@ static NSString *rightHeader = @"rightHeader";
         //通过左侧类型tableViewModel的idKey属性确定右侧商品tableView的数据源,并刷新右侧商品数据
         _rightDataList = _goodsDataDic[_leftDataList[indexPath.row].idKey];
         _rightDataList = [_rightDataList sortedArrayUsingComparator:^NSComparisonResult(AFBCommonGoodsModel * obj1, AFBCommonGoodsModel * obj2) {
-            return [obj1.product_id integerValue] > [obj2.product_id integerValue];
+            return [obj1.rangeID integerValue] > [obj2.rangeID integerValue];
         }];
         [_arrangeView clickBtn:_arrangeView.noumBut];
         [self clickArrangeControl:_arrangeView.noumBut];
@@ -275,8 +280,9 @@ static NSString *rightHeader = @"rightHeader";
     }else{
         
         AFBOrderGoodsDetailController *goodsDetailVC = [[AFBOrderGoodsDetailController alloc] init];
-        goodsDetailVC.model = _rightDataList[indexPath.row];
-
+        
+        goodsDetailVC.model = _ShopCarHas(_rightDataList[indexPath.row]);
+        //        NSLog(@"%@",goodsDetailVC.model.rangeID);
         [self.navigationController pushViewController:goodsDetailVC animated:YES];
     }
 }
@@ -374,7 +380,7 @@ static NSString *rightHeader = @"rightHeader";
     else{
         AFBOrderRightCell *cell = [tableView dequeueReusableCellWithIdentifier:orderRightCellID forIndexPath:indexPath];
         
-        cell.dataModel = _rightDataList[indexPath.row];
+        cell.dataModel = _ShopCarHas(_rightDataList[indexPath.row]);
         return cell;
     }
     

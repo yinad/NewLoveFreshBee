@@ -73,6 +73,7 @@
     [increaseAndReduceView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(addDoodsLab);
         make.left.equalTo(addDoodsLab.mas_right).offset(4);
+        make.width.mas_equalTo(increaseAndReduceView.width);
     }];
     
     [shopCarBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -88,17 +89,17 @@
     
 }
 
-- (void)setGoodsCount:(NSInteger)goodsCount{
-    _goodsCount = goodsCount;
-    
-    //如果个数为0 隐藏 减号 和 数量Label
-    _goodsCountLab.hidden = (goodsCount == 0);
-    
-    //给label赋值
-    _goodsCountLab.text = @(goodsCount).description;
-    
-}
-
+//- (void)setGoodsCount:(NSInteger)goodsCount{
+//    _goodsCount = goodsCount;
+//    
+//    //如果个数为0 隐藏 减号 和 数量Label
+//    _goodsCountLab.hidden = (goodsCount == 0);
+//    
+//    //给label赋值
+//    _goodsCountLab.text = @(goodsCount).description;
+//    
+//}
+//
 //实现加减View的代理方法
 - (void)minusPlusView:(AFBOrderIncreaseAndReduceView *)iarView withCount:(NSInteger)goodsCount{
     _goodsCount = goodsCount;

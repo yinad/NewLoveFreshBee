@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AFBOrderIncreaseAndReduceView.h"
 
+
 @interface AFBOrderGoodsDetailsFootView : UIView<AFBOrderIncreaseAndReduceViewDelegate>
 
 @property (nonatomic, weak)UIButton *favoriteBtn;
@@ -16,6 +17,7 @@
 @property (nonatomic, weak)UILabel *goodsCountLab;
 
 @property(nonatomic, assign) NSInteger goodsCount;//商品个数
+
 
 
 @end

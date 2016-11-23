@@ -71,7 +71,7 @@
         self.seletedBtn.titleLable.textColor = [UIColor orangeColor];
         self.priceBut.isUP = NO;
     }
-   
+    
 }
 
 

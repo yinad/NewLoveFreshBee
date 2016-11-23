@@ -38,7 +38,7 @@
     if (_footView == nil) {
         _footView = [[AFBOrderGoodsDetailsFootView alloc] init];
     }
-    
+    _footView.increaseAndReduceView.model = self.model;
     return _footView;
 }
 
