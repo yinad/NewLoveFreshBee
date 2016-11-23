@@ -71,7 +71,7 @@
     AFBOrderIncreaseAndReduceView *increaseAndReduceView = [AFBOrderIncreaseAndReduceView orderIncreaseAndReduceView];
     
     _minusPlusView = increaseAndReduceView;
-    increaseAndReduceView.delegate = self;
+//    increaseAndReduceView.delegate = self;
     
     [self.contentView addSubview:increaseAndReduceView];
     
@@ -79,7 +79,7 @@
     CGSize size = increaseAndReduceView.bounds.size;
     [increaseAndReduceView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(size);
-        make.right.bottom.equalTo(self).offset(-8);
+        make.right.bottom.equalTo(self.contentView).offset(-8);
     }];
     
     //MARK:设置label的加粗

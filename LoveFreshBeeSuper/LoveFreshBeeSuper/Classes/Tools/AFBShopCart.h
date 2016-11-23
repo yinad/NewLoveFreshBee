@@ -13,6 +13,10 @@
 #define _ShopCarSub(M) [[AFBShopCart sharedShopCart] shopCartSubGoodsModel: M]
 //判断
 #define _ShopCarHas(M) [[AFBShopCart sharedShopCart] returnModel:M]
+//购物车中的商品个数总和
+#define _ShopCarGoodsCound [_sharedShopCart showGoodsListCount]
+//商品总价
+#define _ShopCarGoodsPrice [_sharedShopCart showGoodsListPrice]
 
 #define ShopCar [AFBShopCart sharedShopCart]
 

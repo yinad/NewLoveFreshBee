@@ -10,6 +10,6 @@
 
 @interface AFBShopCarController : AFBBaseViewController
 
-@property(nonatomic,strong) NSArray *shopModelList;
+
 
 @end

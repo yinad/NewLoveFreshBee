@@ -71,6 +71,8 @@
 		213462441DE31685005E6F44 /* AFBCommentTopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 213462421DE31685005E6F44 /* AFBCommentTopListCell.m */; };
 		213462451DE31685005E6F44 /* AFBCommentTopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 213462431DE31685005E6F44 /* AFBCommentTopListCell.xib */; };
 		23DF57041DE600A500AEED56 /* AFBShopCart.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DF57031DE600A500AEED56 /* AFBShopCart.m */; };
+		23DF57071DE60B4D00AEED56 /* AFBShopCarGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DF57061DE60B4D00AEED56 /* AFBShopCarGoodsCell.m */; };
+		23DF57091DE60B5F00AEED56 /* AFBShopCarGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DF57081DE60B5F00AEED56 /* AFBShopCarGoodsCell.xib */; };
 		23EA0C791DE1D71B00638F6D /* AFBOrderLeftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EA0C781DE1D71B00638F6D /* AFBOrderLeftModel.m */; };
 		23F880EE1DE2AA74000F2A91 /* AFBCommonGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F880ED1DE2AA74000F2A91 /* AFBCommonGoodsModel.m */; };
 		2A1EF8CC1DE1AD77006EC1F0 /* AFBAlerShardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1EF8C91DE1AD77006EC1F0 /* AFBAlerShardController.m */; };
@@ -243,6 +245,9 @@
 		2302F2EE1DE34E750053DD7B /* AFBOrderGoodsArrangeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBOrderGoodsArrangeView.m; sourceTree = "<group>"; };
 		23DF57021DE600A500AEED56 /* AFBShopCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBShopCart.h; sourceTree = "<group>"; };
 		23DF57031DE600A500AEED56 /* AFBShopCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBShopCart.m; sourceTree = "<group>"; };
+		23DF57051DE60B4D00AEED56 /* AFBShopCarGoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBShopCarGoodsCell.h; sourceTree = "<group>"; };
+		23DF57061DE60B4D00AEED56 /* AFBShopCarGoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBShopCarGoodsCell.m; sourceTree = "<group>"; };
+		23DF57081DE60B5F00AEED56 /* AFBShopCarGoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AFBShopCarGoodsCell.xib; sourceTree = "<group>"; };
 		23EA0C771DE1D71B00638F6D /* AFBOrderLeftModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBOrderLeftModel.h; sourceTree = "<group>"; };
 		23EA0C781DE1D71B00638F6D /* AFBOrderLeftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBOrderLeftModel.m; sourceTree = "<group>"; };
 		23F880EC1DE2AA74000F2A91 /* AFBCommonGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBCommonGoodsModel.h; sourceTree = "<group>"; };
@@ -690,6 +695,9 @@
 		213462171DE2A8A4005E6F44 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				23DF57051DE60B4D00AEED56 /* AFBShopCarGoodsCell.h */,
+				23DF57061DE60B4D00AEED56 /* AFBShopCarGoodsCell.m */,
+				23DF57081DE60B5F00AEED56 /* AFBShopCarGoodsCell.xib */,
 				213462181DE2A8A4005E6F44 /* AFBAdressTimeCell.h */,
 				213462191DE2A8A4005E6F44 /* AFBAdressTimeCell.m */,
 				2134621A1DE2A8A4005E6F44 /* AFBAdressTimeCell.xib */,
@@ -906,6 +914,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2134622F1DE2A8A4005E6F44 /* AFBShopCarSupermarkerCell.xib in Resources */,
+				23DF57091DE60B5F00AEED56 /* AFBShopCarGoodsCell.xib in Resources */,
 				2134622D1DE2A8A4005E6F44 /* AFBShopCarFisrtCell.xib in Resources */,
 				213462451DE31685005E6F44 /* AFBCommentTopListCell.xib in Resources */,
 				2134623A1DE2C09F005E6F44 /* AFBCouDanCell.xib in Resources */,
@@ -995,6 +1004,7 @@
 				2A7101F11DE5B8B600A4ED84 /* AFBOrderCommonControlBut.m in Sources */,
 				213140A21DE19958002F7787 /* AFBOrderIncreaseAndReduceView.m in Sources */,
 				213140B41DE19958002F7787 /* UIView+Addition.m in Sources */,
+				23DF57071DE60B4D00AEED56 /* AFBShopCarGoodsCell.m in Sources */,
 				1B389C251DE316730042F99D /* AFBDrawViewController.m in Sources */,
 				0A6C38161DE1D79000DEAFDB /* AFBHomeThreeModel.m in Sources */,
 				2AC3FD9E1DE45961006D7CAB /* TwoTypeCell.m in Sources */,

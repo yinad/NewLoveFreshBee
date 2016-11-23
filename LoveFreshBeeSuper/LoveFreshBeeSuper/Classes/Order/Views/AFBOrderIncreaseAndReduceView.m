@@ -12,6 +12,7 @@
 @interface AFBOrderIncreaseAndReduceView ()
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UIButton *subBtn;
+@property (weak, nonatomic) IBOutlet UIButton *addBtn;
 
 @end
 
@@ -38,6 +39,7 @@
         [_delegate minusPlusView:self withCount:self.goodsCount];
     }
     
+    
 }
 
 - (void)setGoodsCount:(NSInteger)goodsCount{
@@ -46,8 +48,15 @@
     //如果个数为0 隐藏 减号 和 数量Label
     _subBtn.hidden = (goodsCount == 0);
     _countLabel.hidden = (goodsCount == 0);
+    if (goodsCount == 0) {
+        [_addBtn setBackgroundImage:[UIImage imageNamed:@"v2_increase"] forState:UIControlStateNormal];
+        [_subBtn setBackgroundImage:[UIImage imageNamed:@"v2_reduce"] forState:UIControlStateNormal];
+    }
+    
     if (goodsCount>0) {
-        //        _subBtn.imageView.image = [UIImage imageNamed:@"v2_reduced"];
+        [_addBtn setBackgroundImage:[UIImage imageNamed:@"v2_increased"] forState:UIControlStateNormal];
+        
+        [_subBtn setBackgroundImage:[UIImage imageNamed:@"v2_reduced"] forState:UIControlStateNormal];
     }
     
     //给label赋值

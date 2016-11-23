@@ -17,7 +17,7 @@
             <subviews>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ev-Zn-FSu">
                     <rect key="frame" x="30" y="0.0" width="23" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -26,7 +26,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="2wj-89-9aH"/>
                     </constraints>
-                    <state key="normal" title="Button" image="v2_reduce"/>
+                    <state key="normal" title="Button" backgroundImage="v2_reduce"/>
                     <state key="highlighted" image="v2_reduced"/>
                     <connections>
                         <action selector="clickSubBtn:" destination="IR1-gc-4aM" eventType="touchUpInside" id="gEm-Z0-8Ts"/>
@@ -37,7 +37,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="QhI-Ne-0xq"/>
                     </constraints>
-                    <state key="normal" title="Button" image="v2_increase"/>
+                    <state key="normal" title="Button" backgroundImage="v2_increase"/>
                     <state key="highlighted" image="v2_increased"/>
                     <connections>
                         <action selector="clickPlusBtn:" destination="IR1-gc-4aM" eventType="touchUpInside" id="nnL-qM-JU9"/>
@@ -60,6 +60,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="addBtn" destination="ZIg-8X-WUX" id="n1p-WE-oJ0"/>
                 <outlet property="countLabel" destination="9ev-Zn-FSu" id="b4w-3W-bUc"/>
                 <outlet property="subBtn" destination="HJM-77-Hc4" id="w3u-f4-RdQ"/>
             </connections>

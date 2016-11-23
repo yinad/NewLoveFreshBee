@@ -34,60 +34,53 @@ static AFBShopCart *_sharedShopCart = nil;
     return model;
 }
 
-//MARK:如果购物车中已经有相对应的商品,就用block回调模型;
-- (void )modelIsContain:(AFBCommonGoodsModel *)model containModel:(void(^)(AFBCommonGoodsModel *containModel))completeBlock{
-    [_sharedShopCart.goodsList enumerateObjectsUsingBlock:^(AFBCommonGoodsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        NSLog(@"%@------%@",obj.rangeID,model.rangeID);
-        if ([obj.rangeID integerValue]==[model.rangeID integerValue]) {
-            completeBlock(obj);
-        }
-    }];
-}
-
 //MARK:添加一个model到购物车
 - (void)shopCartAddGoodsModel:(AFBCommonGoodsModel *)model{
     if ([_sharedShopCart isContainModel:model]) {
-        [_sharedShopCart modelIsContain:model containModel:^(AFBCommonGoodsModel *containModel) {
-            containModel.buyCount++;
-            NSLog(@"%@---%zd",containModel,containModel.buyCount);
-            return ;
-        }];
+        //返回对应的model,确保操作的是购物车数组里的模型而不是新传入的模型
+        AFBCommonGoodsModel* tempModel = [_sharedShopCart returnModel:model];
+        tempModel.buyCount++;
+
     }else{
         [_sharedShopCart.goodsList addObject:model];
         model.buyCount = 1;
-        NSLog(@"新添加了一个商品");
+        NSLog(@"新添加了一个新商品");
     }
 }
-
-
-
-
 
 //MARK:减少一个model
 - (void)shopCartSubGoodsModel:(AFBCommonGoodsModel *)model{
+    //判断是否包含model
     if ([_sharedShopCart isContainModel:model]) {
-        [_sharedShopCart modelIsContain:model containModel:^(AFBCommonGoodsModel *containModel) {
-            if (containModel.buyCount > 0) {
-                containModel.buyCount--;
-            }else{
-                [_sharedShopCart.goodsList removeObject:containModel];
+        //返回对应的model,确保操作的是购物车数组里的模型而不是新传入的模型
+            AFBCommonGoodsModel* tempModel = [_sharedShopCart returnModel:model];
+            tempModel.buyCount--;
+            if (tempModel.buyCount == 0) {
+                 [_sharedShopCart.goodsList removeObject:tempModel];
+                NSLog(@"购物车里已经没有了这个商品");
             }
-            NSLog(@"%@---%zd",containModel,containModel.buyCount);
-        }];
-    }else{
-        [_sharedShopCart.goodsList addObject:model];
-        model.buyCount = 1;
-        NSLog(@"新添加了一个商品");
+        
+//        NSLog(@"%zd,%f",[_sharedShopCart showGoodsListCount],[_sharedShopCart showGoodsListPrice]);
     }
 }
 
+//MARK:购物车中的商品总价
+//- (CGFloat)showGoodsListPrice{
+//    __block CGFloat price = 0.0;
+//    [_sharedShopCart.goodsList enumerateObjectsUsingBlock:^(AFBCommonGoodsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        price = obj.partner_price+;
+//    }];
+//    return price;
+//}
 
-
-
-//MARK:打印购物车中的商品数量
-- (void)shopCartShowGoodsList{
-
+//MARK:购物车中的商品数量
+- (NSInteger)showGoodsListCount{
+    __block NSInteger listCount = 0;
+    [_sharedShopCart.goodsList enumerateObjectsUsingBlock:^(AFBCommonGoodsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        listCount = obj.buyCount ++;
+    }];
+    
+    return listCount;
 }
 
 //MARK:购物车的单例获取方法

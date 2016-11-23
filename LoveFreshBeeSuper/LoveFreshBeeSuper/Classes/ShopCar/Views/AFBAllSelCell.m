@@ -10,7 +10,9 @@
 
 @interface AFBAllSelCell ()
 
-    @property(nonatomic,weak) UIButton *judgeBtn;
+@property(nonatomic, weak) UILabel * priceLable;
+@property(nonatomic, weak) UIButton * selectBut;
+@property(nonatomic, weak) UIButton * sureBut;
 
 @end
 
@@ -29,12 +31,13 @@
 //布局
 - (void)setupUI{
     UIButton *selbtn = [[UIButton alloc] init];
+    self.selectBut = selbtn;
     [selbtn setImage:[UIImage imageNamed:@"v2_noselected"] forState:UIControlStateNormal];
-//    [selbtn setImage:[UIImage imageNamed:@"v2_selected"] forState:UIControlStateHighlighted];
+
     [selbtn addTarget:self action:@selector(selectTotal) forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:selbtn];
-//    selbtn.backgroundColor = [UIColor redColor];
+
     
     UILabel *textL = [[UILabel alloc] init];
     textL.text = @"全选";
@@ -42,6 +45,7 @@
     [self.contentView addSubview:textL];
     
     UILabel *tPriceL = [[UILabel alloc] init];
+    self.priceLable = tPriceL;
     //假数据
     float pri = 10.5;
     tPriceL.text = [NSString stringWithFormat:@"共%.2f¥",pri];
@@ -50,6 +54,7 @@
     [self.contentView addSubview:tPriceL];
     
     UIButton *yellowSelBtn = [[UIButton alloc] init];
+    self.sureBut = yellowSelBtn;
     //假数据
 //    float price = 0.0;
     [yellowSelBtn setTitle:@"选好了" forState:UIControlStateNormal];
@@ -59,14 +64,7 @@
     [yellowSelBtn addTarget:self action:@selector(clickToJudge) forControlEvents:UIControlEventTouchUpInside];
     
     
-//    [yellowSelBtn  setTitle:[NSString stringWithFormat:@"满¥%f起送",price] forState:UIControlStateHighlighted];
-//    [yellowSelBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-//    [yellowSelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    
-//    yellowSelBtn setcolor
-//    [yellowSelBtn  setTitle:[NSString stringWithFormat:@"满¥%f起送",price] forState:UIControlStateNormal];
-//    [yellowSelBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-//    [yellowSelBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
+
     [self.contentView addSubview:yellowSelBtn];
     //布局
     [selbtn mas_makeConstraints:^(MASConstraintMaker *make) {
