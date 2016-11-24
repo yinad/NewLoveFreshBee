@@ -18,16 +18,16 @@
 #import "AFBSaveGoodsController.h"
 #import "AFBSaveHomeController.h"
 #import "AFBMineMyCardController.h"
-<<<<<<< HEAD
+
 #import "AFBAddressController.h"
 #import "AFBOrderFormController.h"
 
-=======
+
 #import "AFBHelpAfterSaleController.h"
 #import "AFBDownLoadManager.h"
 #import "AFBScoreStoreController.h"
 #import "AFBJoinController.h"
->>>>>>> 285dca691c48957be9fd654bcaf21cc681477a98
+
 
 static NSString * oneCell = @"oneCell";
 static NSString * twoCell = @"twoCell";
@@ -150,7 +150,7 @@ TwoTypeCellDegate
     }
     else if (btn.tag == 2)
     {
-<<<<<<< HEAD
+
 //        UIViewController *vc2 = [[UIViewController alloc] init];
 //        vc2.view.backgroundColor = [UIColor greenColor];
         AFBOrderFormController *ofVc = [[AFBOrderFormController alloc]init];
@@ -166,11 +166,10 @@ TwoTypeCellDegate
 
         AFBOrderFormController *ofVc = [[AFBOrderFormController alloc]init];
         [self.navigationController pushViewController:ofVc animated:YES];
-=======
-        UIViewController *vc2 = [[UIViewController alloc] init];
-        vc2.view.backgroundColor = [UIColor greenColor];
-        
-        [self.navigationController pushViewController:vc2 animated:YES];
+//        UIViewController *vc2 = [[UIViewController alloc] init];
+//        vc2.view.backgroundColor = [UIColor greenColor];
+//        
+//        [self.navigationController pushViewController:vc2 animated:YES];
     }
     else if(btn.tag == 3)
     {
@@ -178,7 +177,7 @@ TwoTypeCellDegate
         vc3.view.backgroundColor = [UIColor yellowColor];
         
         [self.navigationController pushViewController:vc3 animated:YES];
->>>>>>> 285dca691c48957be9fd654bcaf21cc681477a98
+
     }
     else
     {
@@ -255,17 +254,17 @@ TwoTypeCellDegate
 
 #pragma mark - NewsCellDelegate
 - (void)topViewClicked:(NewsCell *)topView {
-<<<<<<< HEAD
+
 
 //    MineMyOrderController *vc = [[MineMyOrderController alloc] init];
     AFBOrderFormController *ofVc = [[AFBOrderFormController alloc]init];
     [self.navigationController pushViewController:ofVc animated:YES];
 //    [self.navigationController pushViewController:vc animated:YES];
-=======
+
     
-    MineMyOrderController *vc = [[MineMyOrderController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
->>>>>>> 285dca691c48957be9fd654bcaf21cc681477a98
+//    MineMyOrderController *vc = [[MineMyOrderController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 #pragma mark - 代理方法
@@ -302,19 +301,19 @@ TwoTypeCellDegate
     }
     else if (btn.tag == 2)
     {
-<<<<<<< HEAD
+
         
 //        UIViewController *vc2 = [UIViewController alloc];
 //        vc2.view.backgroundColor = [UIColor redColor];
         //        [self.navigationController pushViewController:vc2 animated:YES];
         AFBAddressController *addressVc = [[AFBAddressController alloc]init];
         [self.navigationController pushViewController:addressVc animated:YES];
-=======
-        UIViewController *vc2 = [UIViewController alloc];
-        vc2.view.backgroundColor = [UIColor redColor];
-        [self.navigationController pushViewController:vc2 animated:YES];
+
+//        UIViewController *vc2 = [UIViewController alloc];
+//        vc2.view.backgroundColor = [UIColor redColor];
+//        [self.navigationController pushViewController:vc2 animated:YES];
         
->>>>>>> 285dca691c48957be9fd654bcaf21cc681477a98
+
     }
     else if (btn.tag == 3)
     {
