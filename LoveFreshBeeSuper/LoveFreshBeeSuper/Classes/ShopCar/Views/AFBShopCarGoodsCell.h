@@ -15,6 +15,7 @@
 
 - (void)reduceGoodsForTableView;
 
+
 @end
 
 @class AFBCommonGoodsModel;

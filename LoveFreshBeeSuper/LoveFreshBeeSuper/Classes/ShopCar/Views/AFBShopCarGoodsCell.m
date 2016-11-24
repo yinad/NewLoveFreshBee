@@ -28,11 +28,13 @@
 
 - (void)setModel:(AFBCommonGoodsModel *)model{
     _model = model;
+    self.selectBtn.selected = YES;
+    
     self.buyCountLabel.text = @(model.buyCount).description;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:model.img]];
     self.nameLabel.text = model.name;
-    CGFloat _price = [model.partner_price floatValue]*model.buyCount;
-    self.price.text = [NSString stringWithFormat:@"%0.2f",_price];
+    CGFloat partner_price = [model.partner_price floatValue];
+    self.price.text = [NSString stringWithFormat:@"%0.2f",partner_price];
     
     [self.hotLabel.layer setBorderWidth:0.8];
     self.hotLabel.layer.borderColor = [UIColor redColor].CGColor;
@@ -51,9 +53,11 @@
         self.buyCountLabel.text = @"99+";
         return;
     }
+  
 //    [self.delegate addGoodsForTableView];
     [self.delegate reduceGoodsForTableView];
     self.buyCountLabel.text = @(self.model.buyCount).description;
+    [self notificationCenter];
 }
 
 - (IBAction)clickSubBtn:(id)sender {
@@ -64,14 +68,21 @@
     }
     [self.delegate reduceGoodsForTableView];
     self.buyCountLabel.text = @(self.model.buyCount).description;
-    
-}
-- (IBAction)selectBtn:(id)sender {
+    [self notificationCenter];
 }
 
-//- (NSInteger)buyCount{
-//
-//}
+- (void)notificationCenter{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"allPrice" object:nil userInfo:@{@"call":@"changePrice"}];
+}
+
+- (IBAction)selectBtn:(id)sender {
+    if (self.model.isSelcet) {
+        
+    }else{
+    
+    }
+}
+
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

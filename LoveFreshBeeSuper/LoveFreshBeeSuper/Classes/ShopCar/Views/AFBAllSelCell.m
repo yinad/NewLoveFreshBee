@@ -7,6 +7,7 @@
 //
 
 #import "AFBAllSelCell.h"
+#import "AFBCommonGoodsModel.h"
 
 @interface AFBAllSelCell ()
 
@@ -31,9 +32,11 @@
 //布局
 - (void)setupUI{
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changAllPrice) name:@"allPrice" object:nil];
     UIButton *selbtn = [[UIButton alloc] init];
     self.selectBut = selbtn;
     [selbtn setImage:[UIImage imageNamed:@"v2_noselected"] forState:UIControlStateNormal];
+    [selbtn setImage:[UIImage imageNamed:@"v2_selected"] forState:UIControlStateSelected];
 
     [selbtn addTarget:self action:@selector(selectAll) forControlEvents:UIControlEventTouchUpInside];
     
@@ -48,8 +51,7 @@
     UILabel *tPriceL = [[UILabel alloc] init];
     self.priceLable = tPriceL;
     //假数据
-    float pri = 10.5;
-    tPriceL.text = [NSString stringWithFormat:@"共%.2f¥",pri];
+    tPriceL.text = [NSString stringWithFormat:@"%.2f",_ShopCarGoodsPrice];
     tPriceL.textColor = [UIColor redColor];
     tPriceL.font = [UIFont systemFontOfSize:13];
     [self.contentView addSubview:tPriceL];
@@ -95,6 +97,15 @@
 
     // Configure the view for the selected state
 }
+
+//接收通知
+- (void)changAllPrice{
+    
+    self.priceLable.text = [NSString stringWithFormat:@"%.2f",_ShopCarGoodsPrice];
+    
+}
+
+
 - (void)clickToJudge{
     //如果选中按钮被勾选,则状态是选中
 //    if(){
@@ -110,8 +121,16 @@
 }
 
 - (void)selectAll{
-    
-    self.priceLable.text = [NSString stringWithFormat:@"%.2f",_ShopCarGoodsPrice];
+    self.selectBut.selected = !self.selectBut.selected;
+    [ShopCar.goodsList enumerateObjectsUsingBlock:^(AFBCommonGoodsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.isSelcet = self.selectBut.selected;
+    }];
+    [self.delegate reloadTableViewData];
     NSLog(@"%.2f",_ShopCarGoodsPrice);
 }
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
 @end

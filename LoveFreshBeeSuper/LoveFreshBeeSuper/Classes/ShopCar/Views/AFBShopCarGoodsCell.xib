@@ -15,13 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2x-VF-U9X">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2x-VF-U9X">
                     <rect key="frame" x="15" y="30" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="i0M-Uu-Mj1"/>
                         <constraint firstAttribute="width" constant="20" id="sEp-XB-NaH"/>
                     </constraints>
-                    <state key="normal" backgroundImage="v2_noselected"/>
+                    <state key="normal">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="v2_selected">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="selectBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="wcQ-KA-IXF"/>
                     </connections>
@@ -71,7 +76,9 @@
                         <constraint firstAttribute="width" constant="30" id="AXH-AF-G04"/>
                         <constraint firstAttribute="height" constant="30" id="RUT-PX-De7"/>
                     </constraints>
-                    <state key="normal" backgroundImage="v2_reduced"/>
+                    <state key="normal" backgroundImage="v2_reduced">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="clickSubBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="okT-4V-4bA"/>
                     </connections>
@@ -123,7 +130,7 @@
     </objects>
     <resources>
         <image name="v2_increased" width="30" height="30"/>
-        <image name="v2_noselected" width="16" height="16"/>
         <image name="v2_reduced" width="30" height="30"/>
+        <image name="v2_selected" width="16" height="16"/>
     </resources>
 </document>
