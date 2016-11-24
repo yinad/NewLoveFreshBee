@@ -18,7 +18,10 @@
 #import "AFBSaveGoodsController.h"
 #import "AFBSaveHomeController.h"
 #import "AFBMineMyCardController.h"
-
+#import "AFBHelpAfterSaleController.h"
+#import "AFBDownLoadManager.h"
+#import "AFBScoreStoreController.h"
+#import "AFBJoinController.h"
 
 static NSString * oneCell = @"oneCell";
 static NSString * twoCell = @"twoCell";
@@ -40,8 +43,39 @@ TwoTypeCellDegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //    [self getData];
     
 }
+//-(void)getData
+//{
+//
+//    [AFBDownLoadManager shareManager] getMineCardDataWithconpleteBlock:^(NSArray *dataArray) {
+//
+//    }
+//
+//
+//
+//
+//
+//
+//    //我的优惠券
+////    - (void)getMineCardDataWithconpleteBlock:(void(^)(NSArray *dataArray))completeBlock{
+////        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+////        manager.requestSerializer = [[AFJSONRequestSerializer alloc] init];
+////        manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+////        NSDictionary *dict = @{@"call":@"9"};
+////        [manager POST:@"http://iosapi.itcast.cn/loveBeen/MyCoupon.json.php" parameters: dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * responseObject) {
+////            NSArray *array = responseObject[@"data"];
+////            if (completeBlock) {
+////                completeBlock(array);
+////            }
+////        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+////            NSLog(@"%@",error);
+////        }];
+////    }
+//
+//}
+
 
 #pragma mark - 改变导航条的透明度 使其隐藏
 - (void)viewWillAppear:(BOOL)animated {
@@ -111,21 +145,21 @@ TwoTypeCellDegate
     {
         UIViewController *vc2 = [[UIViewController alloc] init];
         vc2.view.backgroundColor = [UIColor greenColor];
-
+        
         [self.navigationController pushViewController:vc2 animated:YES];
     }
     else if(btn.tag == 3)
     {
         UIViewController *vc3 = [[UIViewController alloc] init];
         vc3.view.backgroundColor = [UIColor yellowColor];
-
+        
         [self.navigationController pushViewController:vc3 animated:YES];
     }
     else
     {
-        UIViewController *vc4 = [[UIViewController alloc] init];
-        vc4.view.backgroundColor = [UIColor orangeColor];
-
+        AFBHelpAfterSaleController *vc4 = [[AFBHelpAfterSaleController alloc] init];
+        vc4.view.backgroundColor = [UIColor whiteColor];
+        
         [self.navigationController pushViewController:vc4 animated:YES];
     }
 }
@@ -140,13 +174,13 @@ TwoTypeCellDegate
     oneView.frame = CGRectMake(0, 0, kScreenWidth, 80);
     oneView.delegate = self;
     [footerView addSubview:oneView];
-
+    
     CellView *twoView = [CellView setupTopViewWithImageStrings:@[@"v2_my_cooperate", @"", @"", @""] andTitles:@[@"加盟合作", @"", @"", @""]];
     twoView.delegate = self;
     twoView.frame = CGRectMake(0, 80, kScreenWidth, 80);
     [footerView addSubview:twoView];
     return footerView;
-
+    
 }
 
 #pragma mark - 数据源代理方法
@@ -156,7 +190,7 @@ TwoTypeCellDegate
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+    
     return 1;
     
 }
@@ -174,7 +208,7 @@ TwoTypeCellDegate
         cell.delegate = self;
         return cell;
     }
-
+    
     return nil;
 }
 
@@ -196,7 +230,7 @@ TwoTypeCellDegate
 
 #pragma mark - NewsCellDelegate
 - (void)topViewClicked:(NewsCell *)topView {
-
+    
     MineMyOrderController *vc = [[MineMyOrderController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -214,33 +248,45 @@ TwoTypeCellDegate
 
 - (void)btn:(UIButton *)btn ofTopView:(CellView *)topView
 {
- 
+    
     if (btn.tag == 1 )
     {
-        UIViewController *vc1 = [UIViewController alloc];
-        vc1.view.backgroundColor = [UIColor blueColor];
-        [self.navigationController pushViewController:vc1 animated:YES];
+        
+        if ([btn.titleLabel.text containsString:@"积分商城"]) {
+            AFBScoreStoreController *SotreVC = [AFBScoreStoreController alloc];
+            SotreVC.view.backgroundColor = [UIColor whiteColor];
+            [self.navigationController pushViewController:SotreVC animated:YES];
+        }
+        else
+        {
+            
+            AFBJoinController *vc2 = [AFBJoinController alloc];
+            vc2.view.backgroundColor = [UIColor whiteColor];
+            [self.navigationController pushViewController:vc2 animated:YES];
+            
+        }
+        
     }
     else if (btn.tag == 2)
     {
         UIViewController *vc2 = [UIViewController alloc];
         vc2.view.backgroundColor = [UIColor redColor];
         [self.navigationController pushViewController:vc2 animated:YES];
-
+        
     }
     else if (btn.tag == 3)
     {
         AFBMyMessageController *messageVC = [AFBMyMessageController alloc];
         messageVC.view.backgroundColor = [UIColor purpleColor];
         [self.navigationController pushViewController:messageVC animated:YES];
-
+        
     }
     else
     {
-    
+        
         AFBHelpController *helpVC = [AFBHelpController alloc];
         [self.navigationController pushViewController:helpVC animated:YES];
-
+        
     }
 }
 @end

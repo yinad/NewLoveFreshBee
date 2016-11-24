@@ -111,6 +111,11 @@
 		2AC3FD981DE44FCD006D7CAB /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3FD971DE44FCC006D7CAB /* Model.m */; };
 		2AC3FD9B1DE452BA006D7CAB /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3FD9A1DE452BA006D7CAB /* NewsCell.m */; };
 		2AC3FD9E1DE45961006D7CAB /* TwoTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3FD9D1DE45961006D7CAB /* TwoTypeCell.m */; };
+		2AE85B371DE6C918007FA67D /* AFBHelpAfterSaleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE85B321DE6C918007FA67D /* AFBHelpAfterSaleController.m */; };
+		2AE85B381DE6C918007FA67D /* AFBMInebalanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE85B341DE6C918007FA67D /* AFBMInebalanceController.m */; };
+		2AE85B391DE6C918007FA67D /* AFBMineMyMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE85B361DE6C918007FA67D /* AFBMineMyMessage.m */; };
+		2AE85B3C1DE6C952007FA67D /* AFBScoreStoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE85B3B1DE6C952007FA67D /* AFBScoreStoreController.m */; };
+		2AE85B3F1DE6D1FD007FA67D /* AFBJoinController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE85B3E1DE6D1FD007FA67D /* AFBJoinController.m */; };
 		32E2AE9F1DE1A561003E34D3 /* AFBOrderSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E2AE9E1DE1A561003E34D3 /* AFBOrderSearchController.m */; };
 		3E0A645B2979DF7F6855365E /* libPods-LoveFreshBeeSuper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7A0DD64C29D4B8D8C248FE /* libPods-LoveFreshBeeSuper.a */; };
 		46EDF8F31DE2FC5D00C98ECB /* AFBOrderFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EDF8F21DE2FC5D00C98ECB /* AFBOrderFormController.m */; };
@@ -322,6 +327,16 @@
 		2AC3FD9A1DE452BA006D7CAB /* NewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCell.m; sourceTree = "<group>"; };
 		2AC3FD9C1DE45961006D7CAB /* TwoTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoTypeCell.h; sourceTree = "<group>"; };
 		2AC3FD9D1DE45961006D7CAB /* TwoTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoTypeCell.m; sourceTree = "<group>"; };
+		2AE85B311DE6C918007FA67D /* AFBHelpAfterSaleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBHelpAfterSaleController.h; sourceTree = "<group>"; };
+		2AE85B321DE6C918007FA67D /* AFBHelpAfterSaleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBHelpAfterSaleController.m; sourceTree = "<group>"; };
+		2AE85B331DE6C918007FA67D /* AFBMInebalanceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBMInebalanceController.h; sourceTree = "<group>"; };
+		2AE85B341DE6C918007FA67D /* AFBMInebalanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBMInebalanceController.m; sourceTree = "<group>"; };
+		2AE85B351DE6C918007FA67D /* AFBMineMyMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBMineMyMessage.h; sourceTree = "<group>"; };
+		2AE85B361DE6C918007FA67D /* AFBMineMyMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBMineMyMessage.m; sourceTree = "<group>"; };
+		2AE85B3A1DE6C952007FA67D /* AFBScoreStoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBScoreStoreController.h; sourceTree = "<group>"; };
+		2AE85B3B1DE6C952007FA67D /* AFBScoreStoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBScoreStoreController.m; sourceTree = "<group>"; };
+		2AE85B3D1DE6D1FD007FA67D /* AFBJoinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBJoinController.h; sourceTree = "<group>"; };
+		2AE85B3E1DE6D1FD007FA67D /* AFBJoinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBJoinController.m; sourceTree = "<group>"; };
 		32E2AE9C1DE1A105003E34D3 /* AFB.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFB.pch; sourceTree = "<group>"; };
 		32E2AE9D1DE1A561003E34D3 /* AFBOrderSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBOrderSearchController.h; sourceTree = "<group>"; };
 		32E2AE9E1DE1A561003E34D3 /* AFBOrderSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBOrderSearchController.m; sourceTree = "<group>"; };
@@ -744,6 +759,14 @@
 			children = (
 				2AC3FD8C1DE4212B006D7CAB /* NewsController.h */,
 				2AC3FD8D1DE4212B006D7CAB /* NewsController.m */,
+				2AE85B3A1DE6C952007FA67D /* AFBScoreStoreController.h */,
+				2AE85B3B1DE6C952007FA67D /* AFBScoreStoreController.m */,
+				2AE85B311DE6C918007FA67D /* AFBHelpAfterSaleController.h */,
+				2AE85B321DE6C918007FA67D /* AFBHelpAfterSaleController.m */,
+				2AE85B331DE6C918007FA67D /* AFBMInebalanceController.h */,
+				2AE85B341DE6C918007FA67D /* AFBMInebalanceController.m */,
+				2AE85B351DE6C918007FA67D /* AFBMineMyMessage.h */,
+				2AE85B361DE6C918007FA67D /* AFBMineMyMessage.m */,
 				2A926B481DE4AA8B00998BDB /* MineMyOrderController.h */,
 				2A926B491DE4AA8B00998BDB /* MineMyOrderController.m */,
 				2A7101C71DE572E400A4ED84 /* AFBSaveGoodsController.h */,
@@ -770,6 +793,8 @@
 				2A1EF8C91DE1AD77006EC1F0 /* AFBAlerShardController.m */,
 				2A1EF8CA1DE1AD77006EC1F0 /* AFBMineMyCardController.h */,
 				2A1EF8CB1DE1AD77006EC1F0 /* AFBMineMyCardController.m */,
+				2AE85B3D1DE6D1FD007FA67D /* AFBJoinController.h */,
+				2AE85B3E1DE6D1FD007FA67D /* AFBJoinController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -990,6 +1015,7 @@
 			files = (
 				2A7101EE1DE5B79500A4ED84 /* AFBOrderGoodsArrangeView.m in Sources */,
 				2A1EF8CC1DE1AD77006EC1F0 /* AFBAlerShardController.m in Sources */,
+				2AE85B381DE6C918007FA67D /* AFBMInebalanceController.m in Sources */,
 				2AC3FD7F1DE3F77F006D7CAB /* SystemMessageCell.m in Sources */,
 				2A92B94A1DE2D05D000A1719 /* MineModel.m in Sources */,
 				213462351DE2A918005E6F44 /* AFBShopCarController.m in Sources */,
@@ -1030,6 +1056,7 @@
 				213462441DE31685005E6F44 /* AFBCommentTopListCell.m in Sources */,
 				2AC3FD9B1DE452BA006D7CAB /* NewsCell.m in Sources */,
 				213140A91DE19958002F7787 /* AFBOrderRightTableViewFootView.m in Sources */,
+				2AE85B3C1DE6C952007FA67D /* AFBScoreStoreController.m in Sources */,
 				0A6C38081DE1BBB000DEAFDB /* AFBHomeFlowLayout.m in Sources */,
 				46EDF8F31DE2FC5D00C98ECB /* AFBOrderFormController.m in Sources */,
 				2A7101F51DE5B99000A4ED84 /* AFBPriceArrangeControlText.m in Sources */,
@@ -1037,6 +1064,7 @@
 				213462391DE2C09F005E6F44 /* AFBCouDanCell.m in Sources */,
 				46EDF8FC1DE2FDCF00C98ECB /* AFBAddressController.m in Sources */,
 				213140171DE191A2002F7787 /* AppDelegate.m in Sources */,
+				2AE85B391DE6C918007FA67D /* AFBMineMyMessage.m in Sources */,
 				213140AD1DE19958002F7787 /* NSAttributedString+Addition.m in Sources */,
 				213140141DE191A2002F7787 /* main.m in Sources */,
 				213140B61DE19958002F7787 /* UIViewController+Addition.m in Sources */,
@@ -1060,6 +1088,7 @@
 				46EDF8FF1DE2FDD800C98ECB /* AFBAddressCell.m in Sources */,
 				46EDF8F61DE2FC8100C98ECB /* AFBOrderFormModel.m in Sources */,
 				0A6C380F1DE1BEFE00DEAFDB /* AFBHomeThreeCell.m in Sources */,
+				2AE85B3F1DE6D1FD007FA67D /* AFBJoinController.m in Sources */,
 				213140AC1DE19958002F7787 /* NSArray+Log.m in Sources */,
 				213140AB1DE19958002F7787 /* NSArray+Addition.m in Sources */,
 				0A6C380C1DE1BD8200DEAFDB /* AFBHomeSecondCell.m in Sources */,
@@ -1088,6 +1117,7 @@
 				2A7101DC1DE5B5BF00A4ED84 /* WZXLaunchViewController.m in Sources */,
 				46EDF9021DE2FDE100C98ECB /* AFBEditAddressController.m in Sources */,
 				23EA0C791DE1D71B00638F6D /* AFBOrderLeftModel.m in Sources */,
+				2AE85B371DE6C918007FA67D /* AFBHelpAfterSaleController.m in Sources */,
 				0A1A52751DE695D00010B467 /* AFBAnimatonManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,9 @@
 #import "AFBHolderView.h"
 #import "SystemMessageModel.h"
 #import "SystemMessageCell.h"
-
+#import "AFBDownLoadManager.h"
+#import <YYModel.h>
+#import "AFBMineMyMessage.h"
 static NSString *systemCellID = @"oneCell";
 
 
@@ -19,6 +21,8 @@ static NSString *systemCellID = @"oneCell";
 
 @property (nonatomic, strong) AFBHolderView *holderView;
 @property (nonatomic, strong) NSMutableArray *objs;
+
+
 
 @end
 
@@ -39,7 +43,9 @@ static NSString *systemCellID = @"oneCell";
 
 - (void)loadView {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) style:UITableViewStyleGrouped];
-    self.tableView.rowHeight = 120;
+    
+    self.tableView.estimatedRowHeight = 120;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.backgroundColor = AFBRGBCommonColor(224);
     // 隐藏分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -56,19 +62,31 @@ static NSString *systemCellID = @"oneCell";
     
     // 创建占位图片
     [self setupAFBHolderView];
-
     
     
+    [self getData];
     
-    // 假数据
-    for (int i = 0; i < 3; i++) {
-        SystemMessageModel *model = [[SystemMessageModel alloc] init];
-        model.titleText = @"标题123";
-        model.isShowMore = YES;
-        model.detailsText = @"贷款及少积分了看见俺打算离开房间辣打开手机发垃圾都是浪费空间按到了考试及福利卡美国非任何格式的君讲条件还玩儿过电视剧。";
-        [self.objs addObject:model];
-    }
+    //    // 假数据
+    //    for (int i = 0; i < 3; i++) {
+    //        SystemMessageModel *model = [[SystemMessageModel alloc] init];
+    //        model.titleText = @"标题123";
+    //        model.isShowMore = YES;
+    //        model.detailsText = @"贷款及少积分了看见俺打算离开房间辣打开手机发垃圾都是浪费空间按到了考试及福利卡美abfja热火贵人今天还围绕国家求而缺乏而无法和技术的妇女ID光辉杀人国非任何格式的君讲条件还玩儿过电视剧。";
+    //        [self.objs addObject:model];
+    //    }
 }
+- (void)getData
+{
+    
+    [[AFBDownLoadManager shareManager] getMineMessageDataWithconpleteBlock:^(NSArray *dataArray) {
+        
+        _objs = [NSArray yy_modelArrayWithClass:[AFBMineMyMessage class] json:dataArray].copy;
+        [self.tableView reloadData];
+    }];
+    
+}
+
+
 // view 已经布局好的时候 更改大小
 - (void)viewDidLayoutSubviews {
     CGFloat holderViewW = 160;
@@ -79,9 +97,8 @@ static NSString *systemCellID = @"oneCell";
 }
 
 #pragma mark - 创建占位图片
-
 - (void)setupAFBHolderView {
-    _holderView = [AFBHolderView creatHolderViewWithImageName:@"没有消息呦" lbName:@"pushlistview_up"];
+    _holderView = [AFBHolderView creatHolderViewWithImageName:@"pushlistview_up" lbName:@"并没有消息呦~~"];
     [self.tableView addSubview:_holderView];
     
 }
