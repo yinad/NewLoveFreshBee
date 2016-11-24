@@ -34,13 +34,15 @@
     return _headView;
 }
 
-- (AFBOrderGoodsDetailsFootView *)footView{
-    if (_footView == nil) {
-        _footView = [[AFBOrderGoodsDetailsFootView alloc] init];
-    }
-    _footView.increaseAndReduceView.model = self.model;
-    return _footView;
-}
+//- (AFBOrderGoodsDetailsFootView *)footView{
+//    if (_footView == nil) {
+//        AFBOrderGoodsDetailsFootView *footView = [[AFBOrderGoodsDetailsFootView alloc] init];
+//        footView.model = self.model;
+//        _footView = footView;
+//    }
+//    _footView.increaseAndReduceView.model = self.model;
+//    return _footView;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,6 +73,10 @@
     [contentView addSubview:detailView];
     
     //底部视图
+    AFBOrderGoodsDetailsFootView *footView = [[AFBOrderGoodsDetailsFootView alloc] init];
+    footView.model = self.model;
+    footView.increaseAndReduceView.model = self.model;
+    self.footView = footView;
     [self.view addSubview:self.footView];
     
     //布局

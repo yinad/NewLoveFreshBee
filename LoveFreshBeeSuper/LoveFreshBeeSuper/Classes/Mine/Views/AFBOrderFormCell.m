@@ -86,7 +86,8 @@
     //图片
     UIImageView *pic = [[UIImageView alloc]init];
     self.pic = pic;
-    pic.backgroundColor = [UIColor orangeColor];
+//    pic.backgroundColor = [UIColor orangeColor];
+    pic.image = [UIImage imageNamed:@"xuebi"];
     [self.contentView addSubview:pic];
     
     [pic mas_makeConstraints:^(MASConstraintMaker *make) {
