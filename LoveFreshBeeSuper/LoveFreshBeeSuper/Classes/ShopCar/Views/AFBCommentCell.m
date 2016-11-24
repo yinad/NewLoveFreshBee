@@ -6,7 +6,21 @@
 //  Copyright © 2016年 gao2015. All rights reserved.
 //
 
+//
+//  AFBCommentCell.m
+//  LoveFreshBeeSuper
+//
+//  Created by gao2015 on 2016/11/21.
+//  Copyright © 2016年 gao2015. All rights reserved.
+//
+
 #import "AFBCommentCell.h"
+
+@interface AFBCommentCell ()
+
+@property(nonatomic,weak) UILabel *detalLabel;
+
+@end
 
 @implementation AFBCommentCell
 
@@ -17,7 +31,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -27,8 +41,16 @@
     }
     return self;
 }
-
+- (void)notific:(NSNotification *)noti{
+    
+    NSDictionary *dic = noti.userInfo;
+    self.detalLabel.text = dic[@"str"];
+    
+}
 - (void)setupUI{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notific:) name:@"回传订单详情" object:nil];
+    
+    
     UILabel *comLabel = [[UILabel alloc] init];
     comLabel.text = @"备注";
     comLabel.font = [UIFont systemFontOfSize:13];
@@ -38,7 +60,9 @@
     detalLabel.text = @"其他要求 (如带一盒红塔山)";
     detalLabel.font = [UIFont systemFontOfSize:12];
     detalLabel.numberOfLines = 1;
+    detalLabel.textAlignment = NSTextAlignmentRight;
     detalLabel.textColor = [UIColor grayColor];
+    self.detalLabel = detalLabel;
     [self.contentView addSubview:detalLabel];
     
     UIImageView *arrImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"baidu_wallet_arrow_right"]];
@@ -54,10 +78,11 @@
         make.centerY.equalTo(self.contentView);
         make.right.equalTo(self.contentView).offset(-10);
     }];
-
+    
     [detalLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.baseline.equalTo(arrImg);
         make.right.equalTo(arrImg.mas_left).offset(-8);
+        make.width.mas_equalTo(300);
         
     }];
     
