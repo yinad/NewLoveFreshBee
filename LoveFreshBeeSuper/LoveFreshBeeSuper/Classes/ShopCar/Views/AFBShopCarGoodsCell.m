@@ -51,6 +51,8 @@
         self.buyCountLabel.text = @"99+";
         return;
     }
+//    [self.delegate addGoodsForTableView];
+    [self.delegate reduceGoodsForTableView];
     self.buyCountLabel.text = @(self.model.buyCount).description;
 }
 
@@ -60,7 +62,7 @@
         NSLog(@"删除商品");
         [self.delegate removeCellForTableView];
     }
-    
+    [self.delegate reduceGoodsForTableView];
     self.buyCountLabel.text = @(self.model.buyCount).description;
     
 }

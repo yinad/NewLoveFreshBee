@@ -13,6 +13,8 @@
 
 - (void)removeCellForTableView;
 
+- (void)reduceGoodsForTableView;
+
 @end
 
 @class AFBCommonGoodsModel;
@@ -20,5 +22,5 @@
 
 @property(nonatomic, weak) id <AFBShopCarGoodscellDelegate> delegate;
 @property(nonatomic, strong) AFBCommonGoodsModel * model;
-
+@property(nonatomic,weak)UITableView *tableView;
 @end

@@ -63,6 +63,8 @@ static AFBShopCart *_sharedShopCart = nil;
         
 //        NSLog(@"%zd,%f",[_sharedShopCart showGoodsListCount],[_sharedShopCart showGoodsListPrice]);
     }
+   
+    
 }
 
 //MARK:购物车中勾选的商品总价
