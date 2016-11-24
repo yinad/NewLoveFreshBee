@@ -10,9 +10,10 @@
 #import "AFBAddressCell.h"
 #import "Masonry.h"
 #import "AFBEditAddressController.h"
+#import "AFBNewAddressController.h"
 
 static NSString *cellID = @"cell";
-@interface AFBAddressController ()
+@interface AFBAddressController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak) UIView *footV;
 @end
 
@@ -20,17 +21,44 @@ static NSString *cellID = @"cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView reloadData];
-    self.navigationItem.title = @"我的收货地址";
-    self.tableView.rowHeight = 80;
-    [self.tableView registerClass:[AFBAddressCell class] forCellReuseIdentifier:cellID];
+    self.navigationItem.title = @"管理收货地址";
+    self.view.backgroundColor = [UIColor orangeColor];
+    //    [self.tableView reloadData];
+    //    self.tableView.rowHeight = 80;
+    //    [self.tableView registerClass:[AFBAddressCell class] forCellReuseIdentifier:cellID];
     
-    [self setupUI];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UITableView *tableView = [[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    [tableView registerClass:[AFBAddressCell class] forCellReuseIdentifier:cellID];
+    tableView.rowHeight = 80;
+    tableView.delegate =self;
+    tableView.dataSource = self;
+    
+    [self.view addSubview:tableView];
+    
+    [self setupUI];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return section = 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    AFBAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell.btn_pic addTarget:self action:@selector(pushNextv) forControlEvents:UIControlEventTouchUpInside];
+    
+    return cell;
 }
 
 - (void)setupUI{
@@ -41,7 +69,6 @@ static NSString *cellID = @"cell";
     
     UIButton *btn_address = [[UIButton alloc]init];
     btn_address.layer.cornerRadius = 5;
-//    [btn_address setImage:[UIImage imageNamed:@"coupon_verify_normal"] forState:UIControlStateNormal];
     btn_address.backgroundColor = [UIColor yellowColor];
     [btn_address setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn_address setTitle:@"+新增地址" forState:UIControlStateNormal];
@@ -55,37 +82,21 @@ static NSString *cellID = @"cell";
     footV.hidden = NO;
 }
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    self.footV.hidden = YES;
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of rows
-    return 3;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    AFBAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (self.footV.hidden == YES) {
+        self.footV.hidden = NO;
+    }
     
-//    [cell.btn_pic addObserver:self forKeyPath:@"Highlighted" options:NSKeyValueObservingOptionNew context:nil];
-    [cell.btn_pic addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
-    
-    return cell;
 }
 
 -(void)push{
-    AFBEditAddressController *eaVc = [[AFBEditAddressController alloc]init];
+    AFBNewAddressController *eaVc = [[AFBNewAddressController alloc]init];
     [self.navigationController pushViewController:eaVc animated:YES];
     self.footV.hidden = YES;
 }
@@ -95,6 +106,125 @@ static NSString *cellID = @"cell";
     [self.navigationController pushViewController:eaVc animated:YES];
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////
+////  AFBAddressController.m
+////  AFBMineAddress
+////
+////  Created by drfgh on 16/11/20.
+////  Copyright © 2016年 drfgh. All rights reserved.
+////
+//
+//#import "AFBAddressController.h"
+//#import "AFBAddressCell.h"
+//#import "Masonry.h"
+//#import "AFBEditAddressController.h"
+//
+//static NSString *cellID = @"cell";
+//@interface AFBAddressController ()
+//@property (nonatomic,weak) UIView *footV;
+//@end
+//
+//@implementation AFBAddressController
+//
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//    [self.tableView reloadData];
+//    self.navigationItem.title = @"我的收货地址";
+//    self.tableView.rowHeight = 80;
+//    [self.tableView registerClass:[AFBAddressCell class] forCellReuseIdentifier:cellID];
+//    
+//    [self setupUI];
+//    // Uncomment the following line to preserve selection between presentations.
+//    // self.clearsSelectionOnViewWillAppear = NO;
+//    
+//    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+//    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//}
+//
+//- (void)setupUI{
+//    UIView *footV = [[UIView alloc]init];
+//    self.footV = footV;
+//    [[UIApplication sharedApplication].keyWindow addSubview:footV];
+//    footV.frame = CGRectMake(0, 600, [UIScreen mainScreen].bounds.size.width, 70);
+//    
+//    UIButton *btn_address = [[UIButton alloc]init];
+//    btn_address.layer.cornerRadius = 5;
+////    [btn_address setImage:[UIImage imageNamed:@"coupon_verify_normal"] forState:UIControlStateNormal];
+//    btn_address.backgroundColor = [UIColor yellowColor];
+//    [btn_address setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [btn_address setTitle:@"+新增地址" forState:UIControlStateNormal];
+//    [footV addSubview:btn_address];
+//    [btn_address mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.centerY.equalTo(footV);
+//        make.width.mas_equalTo(200);
+//    }];
+//    
+//    [btn_address addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
+//    footV.hidden = NO;
+//}
+//
+//
+//
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
+//
+//#pragma mark - Table view data source
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+////#warning Incomplete implementation, return the number of sections
+//    return 1;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+////#warning Incomplete implementation, return the number of rows
+//    return 3;
+//}
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    AFBAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+//    
+////    [cell.btn_pic addObserver:self forKeyPath:@"Highlighted" options:NSKeyValueObservingOptionNew context:nil];
+//    [cell.btn_pic addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    return cell;
+//}
+//
+//-(void)push{
+//    AFBEditAddressController *eaVc = [[AFBEditAddressController alloc]init];
+//    [self.navigationController pushViewController:eaVc animated:YES];
+//    self.footV.hidden = YES;
+//}
+//
+//- (void)pushNextv{
+//    AFBEditAddressController *eaVc = [[AFBEditAddressController alloc]init];
+//    [self.navigationController pushViewController:eaVc animated:YES];
+//    
+//}
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    return 80;
