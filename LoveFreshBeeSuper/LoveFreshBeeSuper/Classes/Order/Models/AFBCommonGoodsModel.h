@@ -25,5 +25,7 @@
 //购买数量
 @property(nonatomic,assign)NSInteger buyCount;
 
+@property(nonatomic, assign) BOOL isSelcet;
+
 
 @end

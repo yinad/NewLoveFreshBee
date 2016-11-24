@@ -160,7 +160,6 @@ static NSString *footID = @"foot_id";
                 //                [self.arrayM addObject:btnTitleStr];
             }
             //注意顺序
-            
         }
     }
     //将传递过来的title赋值显示

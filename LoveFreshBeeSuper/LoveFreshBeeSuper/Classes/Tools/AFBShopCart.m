@@ -44,6 +44,7 @@ static AFBShopCart *_sharedShopCart = nil;
     }else{
         [_sharedShopCart.goodsList addObject:model];
         model.buyCount = 1;
+        model.isSelcet = YES;
         NSLog(@"新添加了一个新商品");
     }
 }
@@ -64,14 +65,20 @@ static AFBShopCart *_sharedShopCart = nil;
     }
 }
 
-//MARK:购物车中的商品总价
-//- (CGFloat)showGoodsListPrice{
-//    __block CGFloat price = 0.0;
-//    [_sharedShopCart.goodsList enumerateObjectsUsingBlock:^(AFBCommonGoodsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        price = obj.partner_price+;
-//    }];
-//    return price;
-//}
+//MARK:购物车中勾选的商品总价
+- (CGFloat)showGoodsListPrice{
+    __block CGFloat price = 0.0;
+    [_sharedShopCart.goodsList enumerateObjectsUsingBlock:^(AFBCommonGoodsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //勾选状态的模型进入分支
+        if (obj.isSelcet) {
+            price += (obj.partner_price.floatValue * obj.buyCount);
+            
+        }
+    }];
+    return price;
+}
+
+
 
 //MARK:购物车中的商品数量
 - (NSInteger)showGoodsListCount{
@@ -91,6 +98,7 @@ static AFBShopCart *_sharedShopCart = nil;
         if (_sharedShopCart == nil ) {
             _sharedShopCart = [[AFBShopCart alloc] init];
         }
+
     });
     return _sharedShopCart;
 }

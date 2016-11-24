@@ -30,11 +30,12 @@
 }
 //布局
 - (void)setupUI{
+    
     UIButton *selbtn = [[UIButton alloc] init];
     self.selectBut = selbtn;
     [selbtn setImage:[UIImage imageNamed:@"v2_noselected"] forState:UIControlStateNormal];
 
-    [selbtn addTarget:self action:@selector(selectTotal) forControlEvents:UIControlEventTouchUpInside];
+    [selbtn addTarget:self action:@selector(selectAll) forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:selbtn];
 
@@ -108,8 +109,9 @@
 
 }
 
-- (void)selectTotal{
-
-
+- (void)selectAll{
+    
+    self.priceLable.text = [NSString stringWithFormat:@"%.2f",_ShopCarGoodsPrice];
+    NSLog(@"%.2f",_ShopCarGoodsPrice);
 }
 @end

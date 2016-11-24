@@ -12,6 +12,7 @@
 @implementation AFBDownLoadManager
 
 static id _instance;
+
 + (instancetype)shareManager{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -19,6 +20,7 @@ static id _instance;
     });
     return _instance;
 }
+
 //异步获取首页数据
 - (void)getHomeDataWithParameters:(NSNumber *)parameter CompleteBlock:(void(^)(NSDictionary *dic))completeBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -36,6 +38,7 @@ static id _instance;
         
     }];
 }
+
 //异步获取首页新鲜热卖数据
 - (void)getHomeHotSaleDataParameters:(NSNumber *)parameter CompleteBlock:(void(^)(NSDictionary *dicH,NSString *reqid))completeBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -54,6 +57,7 @@ static id _instance;
     }];
 
 }
+
 //启动页数据
 - (void)getLaunchDataWithBlock:(void(^)(NSDictionary * dic))completeBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -70,6 +74,7 @@ static id _instance;
         NSLog(@"%@",error);
     }];
 }
+
 //异步获取闪电超时数据
 - (void)getSuperMarketDataWithParameters:(NSNumber *)parameter CompleteBlock:(void(^)(NSDictionary *dataDic))completeBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -85,6 +90,7 @@ static id _instance;
         NSLog(@"%@",error);
     }];
 }
+
 //我的订单
 - (void)getMineOrderDataWithcompleteBlock:(void(^)(NSArray *dataArray))completeBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -100,6 +106,7 @@ static id _instance;
         NSLog(@"%@",error);
     }];
 }
+
 //我的优惠券
 - (void)getMineCardDataWithconpleteBlock:(void(^)(NSArray *dataArray))completeBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -115,6 +122,7 @@ static id _instance;
         NSLog(@"%@",error);
     }];
 }
+
 //系统信息
 - (void)getMineSysmsgDataWithconpleteBlock:(void(^)(NSArray *dataArray))completeBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -130,6 +138,7 @@ static id _instance;
         NSLog(@"%@",error);
     }];
 }
+
 //我的消息
 - (void)getMineMessageDataWithconpleteBlock:(void(^)(NSArray *dataArray))completeBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -145,6 +154,7 @@ static id _instance;
         NSLog(@"%@",error);
     }];
 }
+
 //收获地址
 - (void)getMineAdressDataWithconpleteBlock:(void(^)(NSArray *dataArray))completeBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

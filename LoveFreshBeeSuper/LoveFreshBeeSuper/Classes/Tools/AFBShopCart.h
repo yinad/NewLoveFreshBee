@@ -14,9 +14,9 @@
 //判断
 #define _ShopCarHas(M) [[AFBShopCart sharedShopCart] returnModel:M]
 //购物车中的商品个数总和
-#define _ShopCarGoodsCound [_sharedShopCart showGoodsListCount]
+#define _ShopCarGoodsCound [[AFBShopCart sharedShopCart] showGoodsListCount]
 //商品总价
-#define _ShopCarGoodsPrice [_sharedShopCart showGoodsListPrice]
+#define _ShopCarGoodsPrice [[AFBShopCart sharedShopCart] showGoodsListPrice]
 
 #define ShopCar [AFBShopCart sharedShopCart]
 
@@ -30,7 +30,7 @@
 
 + (instancetype)sharedShopCart;
 
-- (void)shopCartShowGoodsList;
+//- (void)shopCartShowGoodsList;
 
 //购物车的回调
 - (void)shopCartAddGoodsModel:(AFBCommonGoodsModel *)model;
@@ -40,5 +40,7 @@
 - (AFBCommonGoodsModel *)returnModel:(AFBCommonGoodsModel *)model;
 
 - (NSInteger)showGoodsListCount;
+
+- (CGFloat)showGoodsListPrice;
 
 @end
