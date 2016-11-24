@@ -7,7 +7,7 @@
 //
 
 #import "SystemMessageCell.h"
-
+#import "AFBMineMyMessage.h"
 
 @interface SystemMessageCell()
 
@@ -22,7 +22,7 @@
 
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-
+    
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
         self.backgroundColor = [UIColor clearColor];
@@ -34,11 +34,11 @@
         
         //1. 创建子控件
         _titleLbl = [[UILabel alloc] init];
-        _titleLbl.font = [UIFont boldSystemFontOfSize:16];
+        _titleLbl.font = [UIFont boldSystemFontOfSize:15];
         [backView addSubview:_titleLbl];
         
         _moreButton = [[UIButton alloc] init];
-        [_moreButton setTitle:@"显示更多" forState:UIControlStateNormal];
+        [_moreButton setTitle:@"显示全部" forState:UIControlStateNormal];
         [_moreButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         _moreButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         [_moreButton addTarget:self action:@selector(moreContent:) forControlEvents:UIControlEventTouchUpInside];
@@ -64,12 +64,13 @@
         
         [_titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(backView).offset(10);
-            make.top.equalTo(backView).offset(15);
-            make.size.mas_equalTo(CGSizeMake(140, 25));
+            make.top.equalTo(backView).offset(8);
+            make.size.mas_equalTo(CGSizeMake(200, 25));
         }];
         
         [_line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(backView);
+            make.top.mas_equalTo(40);
+            //            make.centerY.equalTo(backView);
             make.left.equalTo(backView);
             make.size.mas_equalTo(CGSizeMake(kScreenWidth, 0.5));
         }];
@@ -84,7 +85,9 @@
             make.top.equalTo(_line.mas_bottom).offset(6);
             make.left.equalTo(_line).offset(10);
             make.right.equalTo(backView).offset(-10);
-            make.height.mas_equalTo(40);
+            //            make.height.mas_equalTo(100);
+            //            make.height.mas_equalTo(40);
+            make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
         }];
         
     }
@@ -94,20 +97,27 @@
 
 - (void)moreContent:(UIButton *)btn
 {
-
-    [_detailsLbl mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(100);
-    }];
-
+    if ([btn.titleLabel.text isEqualToString:@"显示全部"])
+    {
+        [btn setTitle:@"收起" forState:UIControlStateNormal];
+        
+    }
+    else
+    {
+        [btn setTitle:@"显示全部" forState:UIControlStateNormal];
+        
+    }
+    
+    
 }
 
-- (void)setModel:(SystemMessageModel *)model {
-
+- (void)setModel:(AFBMineMyMessage *)model {
+    
     _model = model;
     
-    _titleLbl.text = model.titleText;
+    _titleLbl.text = model.title;
     _moreButton.titleLabel.text = @"查看全部";
-    _detailsLbl.text = model.detailsText;
+    _detailsLbl.text = model.content;
     
     
 }

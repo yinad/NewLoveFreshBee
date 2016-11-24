@@ -39,4 +39,6 @@
 
 - (AFBCommonGoodsModel *)returnModel:(AFBCommonGoodsModel *)model;
 
+- (NSInteger)showGoodsListCount;
+
 @end

@@ -31,7 +31,6 @@
 - (void)setDataModel:(AFBCommonGoodsModel *)dataModel{
     
     _dataModel = dataModel;
-    _minusPlusView.model = dataModel;
     self.nameLabel.text = dataModel.name;
     self.specificsLabel.text = dataModel.specifics;
     self.partnerPriceLabel.text = [NSString stringWithFormat:@"¥%@",dataModel.partner_price];
@@ -63,12 +62,13 @@
         //确定位置
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         _startP = [self convertPoint:self.iconView.center toView:window];
-        
         if ([_delegate respondsToSelector:@selector(homeThreeCell:withModel:withStartPoint:)]) {
-            [_delegate homeThreeCell:self.iconView withModel:_dataModel withStartPoint:self.startP];
+            [_delegate homeThreeCell:self.iconView withModel:nil withStartPoint:self.startP];
         }
-        
     }else{
+        if ([_delegate respondsToSelector:@selector(homeThreeCell:)]) {
+            [_delegate homeThreeCell:self];
+        }
         
     }
 }

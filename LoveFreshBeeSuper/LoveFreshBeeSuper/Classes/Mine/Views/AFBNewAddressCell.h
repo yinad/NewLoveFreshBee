@@ -1,15 +1,15 @@
 //
-//  AFBEditAddressCell.h
+//  AFBNewAddressCell.h
 //  AFBMineAddress
 //
-//  Created by drfgh on 16/11/21.
+//  Created by drfgh on 16/11/23.
 //  Copyright © 2016年 drfgh. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "AFBEditAddressModel.h"
+#import "AFBNewAddressModel.h"
 
-@interface AFBEditAddressCell : UITableViewCell
+@interface AFBNewAddressCell : UITableViewCell
 //联系人
 @property (nonatomic,weak) UITextField *tf_name;
 //性别
@@ -27,5 +27,5 @@
 @property (nonatomic,weak) UITextField *tf_address;
 
 //model
-@property (nonatomic,strong) AFBEditAddressModel *model;
+@property (nonatomic,strong) AFBNewAddressModel *model;
 @end

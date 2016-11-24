@@ -56,7 +56,7 @@ static NSString *cellID = @"cell";
     
     AFBOrderFormCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
 //    AFBOrderFormModel *model = cell[indexPath.row];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //    cell.model = model;
 //    cell.textLabel.text = @"1";
     

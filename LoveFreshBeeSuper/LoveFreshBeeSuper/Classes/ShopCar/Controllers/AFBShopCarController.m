@@ -50,86 +50,86 @@ static NSString *GoodsCell = @"goodsCell";
     [self addBgView];
 }
 - (void)setupUI{
-//    self.navigationController.navigationBar.translucent = NO;
+    //    self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"购物车";
     self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
     [self addTableView];
 }
 //添加tableView
 - (void)addTableView{
-   
+    
     //这里要判断是否有数据,进入这个页面的时候
     NSLog(@"%zd",ShopCar.goodsList.count);
-//    if (self.shopModelList.count) {
-        self.shopCarView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
-        [self.view addSubview:_shopCarView];
-
-        _shopCarView.delegate = self;
-        _shopCarView.dataSource = self;
-        
-        //注册
-        [_shopCarView registerNib:[UINib nibWithNibName:@"AFBShopCarFisrtCell" bundle:nil] forCellReuseIdentifier:FirstID];
-        [_shopCarView registerNib:[UINib nibWithNibName:@"AFBShopCarSupermarkerCell" bundle:nil] forCellReuseIdentifier:shopMakID];
-        [_shopCarView registerNib:[UINib nibWithNibName:@"AFBAdressTimeCell" bundle:nil] forCellReuseIdentifier:AdressID];
-        [_shopCarView registerNib:[UINib nibWithNibName:@"AFBCouDanCell" bundle:nil] forCellReuseIdentifier:buyCardID];
-        [_shopCarView registerClass:[AFBBusinessListCell class] forCellReuseIdentifier:BusiListID];
-        [_shopCarView registerClass:[AFBCommentCell class] forCellReuseIdentifier:CommentID];
-        [_shopCarView registerClass:[AFBAllSelCell class] forCellReuseIdentifier:AllselID];
-        [_shopCarView registerNib:[UINib nibWithNibName:@"AFBShopCarGoodsCell" bundle:nil] forCellReuseIdentifier:GoodsCell];
-//    }else{
-//        [self.shopCarView removeFromSuperview];
-//    }
-//    
+    //    if (self.shopModelList.count) {
+    self.shopCarView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    [self.view addSubview:_shopCarView];
+    
+    _shopCarView.delegate = self;
+    _shopCarView.dataSource = self;
+    
+    //注册
+    [_shopCarView registerNib:[UINib nibWithNibName:@"AFBShopCarFisrtCell" bundle:nil] forCellReuseIdentifier:FirstID];
+    [_shopCarView registerNib:[UINib nibWithNibName:@"AFBShopCarSupermarkerCell" bundle:nil] forCellReuseIdentifier:shopMakID];
+    [_shopCarView registerNib:[UINib nibWithNibName:@"AFBAdressTimeCell" bundle:nil] forCellReuseIdentifier:AdressID];
+    [_shopCarView registerNib:[UINib nibWithNibName:@"AFBCouDanCell" bundle:nil] forCellReuseIdentifier:buyCardID];
+    [_shopCarView registerClass:[AFBBusinessListCell class] forCellReuseIdentifier:BusiListID];
+    [_shopCarView registerClass:[AFBCommentCell class] forCellReuseIdentifier:CommentID];
+    [_shopCarView registerClass:[AFBAllSelCell class] forCellReuseIdentifier:AllselID];
+    [_shopCarView registerNib:[UINib nibWithNibName:@"AFBShopCarGoodsCell" bundle:nil] forCellReuseIdentifier:GoodsCell];
+    //    }else{
+    //        [self.shopCarView removeFromSuperview];
+    //    }
+    //
 }
 
 - (void)addBgView{
-     self.shopModelList = ShopCar.goodsList.copy;
+    self.shopModelList = ShopCar.goodsList.copy;
     if (!self.shopModelList.count){
         //防止重复创建多个遮罩View
         if (_bgView) {
             return;
         }
-    UIView * bgView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    bgView.backgroundColor = [UIColor whiteColor];
-    _bgView = bgView;
-    [self.view addSubview:_bgView];
-    
-    UIImageView *shopView = [[UIImageView alloc] init];
-    shopView.image = [UIImage imageNamed:@"v2_shop_empty"];
-    [_bgView addSubview:shopView];
-//    shopView.center = bgView.center;
-    
-    UILabel *desLabel = [[UILabel alloc] init];
-    desLabel.text = @"亲,购物车空空的耶~赶紧去挑好吃的吧";
-    desLabel.font = [UIFont systemFontOfSize:14];
-    desLabel.textColor = [UIColor grayColor];
-    desLabel.textAlignment = NSTextAlignmentCenter;
-    [_bgView addSubview:desLabel];
-    
-    UIButton *searchBtn = [[UIButton alloc] init];
-    [searchBtn setTitle:@"去逛逛" forState:UIControlStateNormal];
-    [searchBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    searchBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [searchBtn.layer setBorderWidth:0.5];
-    [searchBtn addTarget:self action:@selector(jumpToHomeVc) forControlEvents:UIControlEventTouchUpInside];
-    [_bgView addSubview:searchBtn];
-    //布局
-    [shopView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(_bgView);
-        make.centerY.equalTo(_bgView).offset(-80);
-        make.width.mas_equalTo(100);
-        make.height.mas_equalTo(100);
-    }];
-    [desLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.centerX.equalTo(_bgView);
+        UIView * bgView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        bgView.backgroundColor = [UIColor whiteColor];
+        _bgView = bgView;
+        [self.view addSubview:_bgView];
         
-    }];
-    [searchBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(_bgView);
-        make.centerY.equalTo(_bgView).offset(40);
-        make.width.mas_equalTo(200);
-        make.height.mas_equalTo(40);
-    }];
+        UIImageView *shopView = [[UIImageView alloc] init];
+        shopView.image = [UIImage imageNamed:@"v2_shop_empty"];
+        [_bgView addSubview:shopView];
+        //    shopView.center = bgView.center;
+        
+        UILabel *desLabel = [[UILabel alloc] init];
+        desLabel.text = @"亲,购物车空空的耶~赶紧去挑好吃的吧";
+        desLabel.font = [UIFont systemFontOfSize:14];
+        desLabel.textColor = [UIColor grayColor];
+        desLabel.textAlignment = NSTextAlignmentCenter;
+        [_bgView addSubview:desLabel];
+        
+        UIButton *searchBtn = [[UIButton alloc] init];
+        [searchBtn setTitle:@"去逛逛" forState:UIControlStateNormal];
+        [searchBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        searchBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [searchBtn.layer setBorderWidth:0.5];
+        [searchBtn addTarget:self action:@selector(jumpToHomeVc) forControlEvents:UIControlEventTouchUpInside];
+        [_bgView addSubview:searchBtn];
+        //布局
+        [shopView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(_bgView);
+            make.centerY.equalTo(_bgView).offset(-80);
+            make.width.mas_equalTo(100);
+            make.height.mas_equalTo(100);
+        }];
+        [desLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.centerX.equalTo(_bgView);
+            
+        }];
+        [searchBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(_bgView);
+            make.centerY.equalTo(_bgView).offset(40);
+            make.width.mas_equalTo(200);
+            make.height.mas_equalTo(40);
+        }];
     }else{
         [_bgView removeFromSuperview];
         [self.shopCarView reloadData];
@@ -145,9 +145,9 @@ static NSString *GoodsCell = @"goodsCell";
 - (void)removeCellForTableView{
     
     
-//    [self.shopCarView removeFromSuperview];
-//    [self addTableView];
-//    [self.shopCarView reloadData];
+    //    [self.shopCarView removeFromSuperview];
+    //    [self addTableView];
+    //    [self.shopCarView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -216,6 +216,7 @@ static NSString *GoodsCell = @"goodsCell";
     else if (indexPath.section == 3 && indexPath.row == 0){
         AFBCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CommentID forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         return cell;
     }
     else if (indexPath.section == 3 && indexPath.row == 1){
@@ -256,10 +257,10 @@ static NSString *GoodsCell = @"goodsCell";
 //MARK:cell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        NSLog(@"点击了第一个cell");
+//        NSLog(@"点击了第一个cell");
     }
     else if (indexPath.section == 1 && indexPath.row == 0){
-        NSLog(@"点击了闪送超时");
+//        NSLog(@"点击了闪送超时");
     }
     else if(indexPath.section == 1 && indexPath.row == 2){
         NSLog(@"点击凑单专区");
@@ -273,6 +274,12 @@ static NSString *GoodsCell = @"goodsCell";
     else if(indexPath.section == 3 && indexPath.row == 0){
         NSLog(@"点击了备注");
         AFBCommentController *comVc = [[AFBCommentController alloc] init];
+        
+        
+        //        comVc.myBlock = ^(NSString *str)
+        //        {
+        //            NSLog(@"%@",str);
+        //        };
         [self.navigationController pushViewController:comVc animated:YES];
         [self.navigationController hidesBottomBarWhenPushed];
         

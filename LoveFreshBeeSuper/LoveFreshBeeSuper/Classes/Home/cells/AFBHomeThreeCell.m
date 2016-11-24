@@ -116,14 +116,14 @@
     //动画
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     _startP = [self convertPoint:self.imageView.center toView:window];
+    _ShopCarAdd(_model);
     //数据传递
-    _model.buyCount++;
     if ([_delegate respondsToSelector:@selector(homeThreeCell:withAddModel:withStartPoint:)]) {
-        [_delegate homeThreeCell:self withAddModel:_model withStartPoint:_startP];
+        [_delegate homeThreeCell:self withAddModel:nil withStartPoint:_startP];
     }
 }
 //控件赋值
-- (void)setModel:(AFBHomeThreeModel *)model{
+- (void)setModel:(AFBCommonGoodsModel *)model{
     _model = model;
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.img]];
     self.nameLabel.text = model.name;

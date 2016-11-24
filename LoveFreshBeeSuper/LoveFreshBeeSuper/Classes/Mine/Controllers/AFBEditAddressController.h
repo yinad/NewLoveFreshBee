@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AFBEditAddressController : UITableViewController
+@interface AFBEditAddressController : UIViewController//UITableViewController
 
 @end
