@@ -18,11 +18,8 @@
 #import "AFBAllSelCell.h"
 #import "AFBCommentController.h"
 #import "AFBShopCarGoodsCell.h"
-<<<<<<< HEAD
 #import "UITabBar+AFBBage.h"
-=======
 #import "AFBOrderGoodsDetailController.h"
->>>>>>> e50f9ff8954dc692bbc2ff23ad0d46d8429823aa
 
 @class AFBCommonGoodsModel;
 static NSString *FirstID = @"fis_id";
@@ -35,7 +32,7 @@ static NSString *AllselID = @"allSelID";
 static NSString *GoodsCell = @"goodsCell";
 
 
-@interface AFBShopCarController ()<UITableViewDelegate,UITableViewDataSource,AFBShopCarGoodscellDelegate>
+@interface AFBShopCarController ()<UITableViewDelegate,UITableViewDataSource,AFBShopCarGoodscellDelegate,AFBShopCarGoodscellDelegate>
 
 @property(nonatomic,strong) UITableView *shopCarView;
 @property(nonatomic,strong) NSArray<AFBCommonGoodsModel*> *shopModelList;
@@ -161,6 +158,8 @@ static NSString *GoodsCell = @"goodsCell";
 //MARK:cell的代理方法:删除当前行
 - (void)removeCellForTableView{
     //2数据
+    UIAlertView *alerView =  [[UIAlertView alloc]initWithTitle:@"提示" message:@"确定删除这个商品吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    [alerView show];
     
     [self.shopCarView reloadData];
 

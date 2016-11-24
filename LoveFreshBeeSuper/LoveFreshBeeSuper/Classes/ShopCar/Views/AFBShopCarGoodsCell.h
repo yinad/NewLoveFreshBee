@@ -12,7 +12,7 @@
 @protocol AFBShopCarGoodscellDelegate <NSObject>
 
 - (void)removeCellForTableView;
-- (void)addGoodsForTableView;
+
 - (void)reduceGoodsForTableView;
 
 @end
