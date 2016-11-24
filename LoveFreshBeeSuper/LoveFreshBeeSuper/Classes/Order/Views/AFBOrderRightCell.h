@@ -12,7 +12,7 @@
 
 @protocol AFBOrderRightCellDelegate <NSObject>
 
-- (void)homeThreeCell:(AFBOrderRightCell *)OrderRightCell withModel:(AFBCommonGoodsModel *)Model withStartPoint:(CGPoint)startp;
+- (void)homeThreeCell:(UIImageView *)OrderRightImageView withModel:(AFBCommonGoodsModel *)Model withStartPoint:(CGPoint)startp;
 
 @end
 
@@ -20,6 +20,8 @@
 
 @property(nonatomic, strong) AFBCommonGoodsModel * dataModel;
 
-@property(nonatomic, weak) id <AFBOrderRightCellDelegate> dalegate;
+@property(nonatomic, weak) id <AFBOrderRightCellDelegate> delegate;
+
+@property(nonatomic,assign)CGPoint startP;
 
 @end

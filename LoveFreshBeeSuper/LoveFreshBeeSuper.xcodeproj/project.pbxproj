@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1A52751DE695D00010B467 /* AFBAnimatonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A52741DE695D00010B467 /* AFBAnimatonManager.m */; };
 		0A6C38041DE1BA6800DEAFDB /* AFBHomeCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C38031DE1BA6800DEAFDB /* AFBHomeCollectionController.m */; };
 		0A6C38081DE1BBB000DEAFDB /* AFBHomeFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C38071DE1BBB000DEAFDB /* AFBHomeFlowLayout.m */; };
 		0A6C380C1DE1BD8200DEAFDB /* AFBHomeSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C380B1DE1BD8200DEAFDB /* AFBHomeSecondCell.m */; };
@@ -123,6 +124,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1A52731DE695D00010B467 /* AFBAnimatonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBAnimatonManager.h; sourceTree = "<group>"; };
+		0A1A52741DE695D00010B467 /* AFBAnimatonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBAnimatonManager.m; sourceTree = "<group>"; };
 		0A6C38021DE1BA6800DEAFDB /* AFBHomeCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBHomeCollectionController.h; sourceTree = "<group>"; };
 		0A6C38031DE1BA6800DEAFDB /* AFBHomeCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBHomeCollectionController.m; sourceTree = "<group>"; };
 		0A6C38061DE1BBB000DEAFDB /* AFBHomeFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBHomeFlowLayout.h; sourceTree = "<group>"; };
@@ -645,6 +648,8 @@
 		2131407A1DE19958002F7787 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0A1A52731DE695D00010B467 /* AFBAnimatonManager.h */,
+				0A1A52741DE695D00010B467 /* AFBAnimatonManager.m */,
 				23DF57021DE600A500AEED56 /* AFBShopCart.h */,
 				23DF57031DE600A500AEED56 /* AFBShopCart.m */,
 				2A7101DD1DE5B5C600A4ED84 /* AFBDownLoadManager.h */,
@@ -1083,6 +1088,7 @@
 				2A7101DC1DE5B5BF00A4ED84 /* WZXLaunchViewController.m in Sources */,
 				46EDF9021DE2FDE100C98ECB /* AFBEditAddressController.m in Sources */,
 				23EA0C791DE1D71B00638F6D /* AFBOrderLeftModel.m in Sources */,
+				0A1A52751DE695D00010B467 /* AFBAnimatonManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

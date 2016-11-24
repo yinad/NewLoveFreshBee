@@ -50,9 +50,10 @@
     goodsCountLab.layer.masksToBounds = YES;
     goodsCountLab.backgroundColor = [UIColor redColor];
     goodsCountLab.textColor = [UIColor whiteColor];
-    
-    goodsCountLab.bounds = CGRectMake(0, 0, 15, 15);
+    goodsCountLab.font = [UIFont boldSystemFontOfSize:11];
+    goodsCountLab.textAlignment = UITextAlignmentCenter;
     self.goodsCountLab = goodsCountLab;
+    goodsCountLab.hidden = YES;
     [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
         goodsCountLab.transform = CGAffineTransformIdentity;
     } completion:nil];
@@ -85,6 +86,7 @@
     [goodsCountLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(shopCarBtn);
         make.left.equalTo(shopCarBtn.mas_centerX).offset(10);
+        make.size.mas_equalTo(CGSizeMake(15, 15));
     }];
     
 }
@@ -104,6 +106,8 @@
 - (void)minusPlusView:(AFBOrderIncreaseAndReduceView *)iarView withCount:(NSInteger)goodsCount{
     _goodsCount = goodsCount;
     _goodsCountLab.text = @(self.goodsCount).description;
+    self.goodsCountLab.hidden = (self.goodsCount == 0);
+    
 }
 
 

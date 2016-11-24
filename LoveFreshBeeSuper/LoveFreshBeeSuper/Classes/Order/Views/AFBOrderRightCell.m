@@ -60,6 +60,13 @@
 
 - (void)minusPlusView:(AFBOrderIncreaseAndReduceView *)iarView withCount:(NSInteger)goodsCount{
     if (iarView.isPlus) {//增加
+        //确定位置
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        _startP = [self convertPoint:self.iconView.center toView:window];
+        
+        if ([_delegate respondsToSelector:@selector(homeThreeCell:withModel:withStartPoint:)]) {
+            [_delegate homeThreeCell:self.iconView withModel:_dataModel withStartPoint:self.startP];
+        }
         
     }else{
         
@@ -74,6 +81,8 @@
 //    increaseAndReduceView.delegate = self;
     
     [self.contentView addSubview:increaseAndReduceView];
+    
+    increaseAndReduceView.delegate = self;
     
     //increaseAndReduceView的布局size
     CGSize size = increaseAndReduceView.bounds.size;
