@@ -12,6 +12,8 @@
 @protocol AFBShopCarGoodscellDelegate <NSObject>
 
 - (void)removeCellForTableView;
+- (void)addGoodsForTableView;
+- (void)reduceGoodsForTableView;
 
 @end
 
@@ -20,5 +22,5 @@
 
 @property(nonatomic, weak) id <AFBShopCarGoodscellDelegate> delegate;
 @property(nonatomic, strong) AFBCommonGoodsModel * model;
-
+@property(nonatomic,weak)UITableView *tableView;
 @end

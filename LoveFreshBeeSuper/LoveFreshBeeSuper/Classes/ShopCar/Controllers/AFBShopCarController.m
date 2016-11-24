@@ -18,6 +18,7 @@
 #import "AFBAllSelCell.h"
 #import "AFBCommentController.h"
 #import "AFBShopCarGoodsCell.h"
+#import "UITabBar+AFBBage.h"
 
 @class AFBCommonGoodsModel;
 static NSString *FirstID = @"fis_id";
@@ -29,11 +30,13 @@ static NSString *CommentID = @"comment_id";
 static NSString *AllselID = @"allSelID";
 static NSString *GoodsCell = @"goodsCell";
 
+
 @interface AFBShopCarController ()<UITableViewDelegate,UITableViewDataSource,AFBShopCarGoodscellDelegate>
 
 @property(nonatomic,strong) UITableView *shopCarView;
 @property(nonatomic,strong) NSArray<AFBCommonGoodsModel*> *shopModelList;
 @property(nonatomic, weak) UIView * bgView;
+
 
 @end
 
@@ -41,9 +44,19 @@ static NSString *GoodsCell = @"goodsCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //获取通知
+    NSNotificationCenter *cationCenter = [NSNotificationCenter defaultCenter];
+    //参数1:监听者
+    //参数2:监听的方法
+    //参数3:监听谁 (哪个通知)
+    //参数4:nil
+    [cationCenter addObserver:self selector:@selector(addBuyCarViewData:) name:@"reloadData" object:nil];
+    NSLog(@"接收通知");
 }
-//
+- (void)addBuyCarViewData:(NSNotification *)no{
+    [self.shopCarView reloadData];
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     
     [self addBgView];
@@ -54,6 +67,7 @@ static NSString *GoodsCell = @"goodsCell";
     self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
     [self addTableView];
 }
+
 //添加tableView
 - (void)addTableView{
     
@@ -82,7 +96,7 @@ static NSString *GoodsCell = @"goodsCell";
 }
 
 - (void)addBgView{
-    self.shopModelList = ShopCar.goodsList.copy;
+    self.shopModelList = ShopCar.goodsList;
     if (!self.shopModelList.count){
         //防止重复创建多个遮罩View
         if (_bgView) {
@@ -142,11 +156,19 @@ static NSString *GoodsCell = @"goodsCell";
 
 //MARK:cell的代理方法:删除当前行
 - (void)removeCellForTableView{
+    //2数据
     
+    [self.shopCarView reloadData];
+
+}
+//MARK:点击加和减号的动画效果
+- (void)reduceGoodsForTableView{
+    AFBShopCart *shopCar = [AFBShopCart sharedShopCart];
     
-    //    [self.shopCarView removeFromSuperview];
-    //    [self addTableView];
-    //    [self.shopCarView reloadData];
+    [self.tabBarController.tabBar showBadgeOnItemIndex:2 withBadge:[NSString stringWithFormat:@"%zd",[shopCar showGoodsListCount]]];
+    if ([shopCar showGoodsListCount] == 0) {
+        [self.tabBarController.tabBar hideBadgeOnItemIndex:2];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -204,6 +226,7 @@ static NSString *GoodsCell = @"goodsCell";
         AFBShopCarGoodsCell * cell = [tableView dequeueReusableCellWithIdentifier:GoodsCell forIndexPath:indexPath];
         if (self.shopModelList.count) {
             cell.model = self.shopModelList[indexPath.row];
+            cell.tableView = self.shopCarView;
             cell.delegate = self;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
