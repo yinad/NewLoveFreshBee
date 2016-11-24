@@ -34,6 +34,17 @@ static AFBShopCart *_sharedShopCart = nil;
     return model;
 }
 
+//MARK:判断购物车中商品是否全选
+
+- (BOOL)isAllSelecked{
+    for (AFBCommonGoodsModel *  model in _sharedShopCart.goodsList) {
+        if (!model.isSelcet) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 //MARK:添加一个model到购物车
 - (void)shopCartAddGoodsModel:(AFBCommonGoodsModel *)model{
     if ([_sharedShopCart isContainModel:model]) {

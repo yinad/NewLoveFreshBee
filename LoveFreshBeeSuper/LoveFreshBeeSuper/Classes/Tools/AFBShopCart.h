@@ -18,6 +18,9 @@
 //商品总价
 #define _ShopCarGoodsPrice [[AFBShopCart sharedShopCart] showGoodsListPrice]
 
+//商品是否全选 yes为全选
+#define _ShopCarGoodisAllSelect [[AFBShopCart sharedShopCart] isAllSelecked]
+
 #define ShopCar [AFBShopCart sharedShopCart]
 
 @class AFBCommonGoodsModel;
@@ -42,5 +45,8 @@
 - (NSInteger)showGoodsListCount;
 
 - (CGFloat)showGoodsListPrice;
+
+
+- (BOOL)isAllSelecked;
 
 @end

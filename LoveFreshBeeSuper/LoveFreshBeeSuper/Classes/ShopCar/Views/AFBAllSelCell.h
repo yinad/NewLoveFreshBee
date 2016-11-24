@@ -8,14 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol AFBAllSelCellDelegate <NSObject>
-
-- (void)reloadTableViewData;
-
-@end
 
 @interface AFBAllSelCell : UITableViewCell
 
-@property(nonatomic, weak) id <AFBAllSelCellDelegate> delegate;
+
+@property(nonatomic, assign)CGFloat priceL;
+
+@property(nonatomic, weak) UIButton * selectBut;
 
 @end

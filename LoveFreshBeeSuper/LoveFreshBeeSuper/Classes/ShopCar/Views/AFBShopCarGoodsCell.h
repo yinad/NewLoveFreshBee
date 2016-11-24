@@ -11,15 +11,21 @@
 @class AFBShopCarGoodsCell;
 @protocol AFBShopCarGoodscellDelegate <NSObject>
 
+
+
 - (void)removeCellForTableView:(AFBCommonGoodsModel *)model;
 
 - (void)reduceGoodsForTableView;
 
+- (void)returnAllPrice;
+
+- (void)seleckBtnChange:(AFBShopCarGoodsCell *)goodsCell;
 
 @end
 
 @class AFBCommonGoodsModel;
 @interface AFBShopCarGoodsCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 
 @property(nonatomic, weak) id <AFBShopCarGoodscellDelegate> delegate;
 @property(nonatomic, strong) AFBCommonGoodsModel * model;

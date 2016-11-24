@@ -41,29 +41,23 @@ static NSString *GoodsCell = @"goodsCell";
 
 @end
 
-@implementation AFBShopCarController
+@implementation AFBShopCarController{
+    AFBAllSelCell *_allSelCell;
+    NSMutableArray<AFBShopCarGoodsCell *>* _goodsCells;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //获取通知
-    NSNotificationCenter *cationCenter = [NSNotificationCenter defaultCenter];
-    //参数1:监听者
-    //参数2:监听的方法
-    //参数3:监听谁 (哪个通知)
-    //参数4:nil
-    [cationCenter addObserver:self selector:@selector(addBuyCarViewData:) name:@"reloadData" object:nil];
-    NSLog(@"接收通知");
+  
 }
-- (void)addBuyCarViewData:(NSNotification *)no{
-    [self.shopCarView reloadData];
-}
+
 
 - (void)viewWillAppear:(BOOL)animated{
     
     [self addBgView];
 }
 - (void)setupUI{
-    //    self.navigationController.navigationBar.translucent = NO;
+   
     self.navigationItem.title = @"购物车";
     self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
     [self addTableView];
@@ -72,9 +66,6 @@ static NSString *GoodsCell = @"goodsCell";
 //添加tableView
 - (void)addTableView{
     
-    //这里要判断是否有数据,进入这个页面的时候
-    NSLog(@"%zd",ShopCar.goodsList.count);
-    //    if (self.shopModelList.count) {
     self.shopCarView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
     [self.view addSubview:_shopCarView];
     
@@ -90,10 +81,7 @@ static NSString *GoodsCell = @"goodsCell";
     [_shopCarView registerClass:[AFBCommentCell class] forCellReuseIdentifier:CommentID];
     [_shopCarView registerClass:[AFBAllSelCell class] forCellReuseIdentifier:AllselID];
     [_shopCarView registerNib:[UINib nibWithNibName:@"AFBShopCarGoodsCell" bundle:nil] forCellReuseIdentifier:GoodsCell];
-    //    }else{
-    //        [self.shopCarView removeFromSuperview];
-    //    }
-    //
+
 }
 
 - (void)addBgView{
@@ -111,7 +99,6 @@ static NSString *GoodsCell = @"goodsCell";
         UIImageView *shopView = [[UIImageView alloc] init];
         shopView.image = [UIImage imageNamed:@"v2_shop_empty"];
         [_bgView addSubview:shopView];
-        //    shopView.center = bgView.center;
         
         UILabel *desLabel = [[UILabel alloc] init];
         desLabel.text = @"亲,购物车空空的耶~赶紧去挑好吃的吧";
@@ -152,14 +139,36 @@ static NSString *GoodsCell = @"goodsCell";
 
 - (void)jumpToHomeVc{
     [self.tabBarController setSelectedIndex:0];
-    NSLog(@"jumpToHomeVc");
+
 }
 
-//MARK:cell的代理方法:删除当前行
+//MARK:结账cell的代理方法
+- (void)allSelect:(UIButton *)sender{
+    NSLog(@"%zd",sender.selected);
+    [_goodsCells enumerateObjectsUsingBlock:^(AFBShopCarGoodsCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.model.isSelcet = _allSelCell.selectBut.selected;
+        obj.selectBtn.selected = _allSelCell.selectBut.selected;
+    }];
+}
+
+//MARK:商品cell的代理方法:刷新总价
+- (void)returnAllPrice{
+    if (!self.shopModelList.count) {
+        
+        [self addBgView];
+    }
+    _allSelCell.priceL = _ShopCarGoodsPrice;
+}
+
+//MARK:商品cell的代理方法:勾选状态切换
+- (void)seleckBtnChange:(AFBShopCarGoodsCell *)goodsCell{
+    _allSelCell.priceL = _ShopCarGoodsPrice;
+    _allSelCell.selectBut.selected = _ShopCarGoodisAllSelect;
+}
+
+//MARK:商品cell的代理方法:删除当前行
 - (void)removeCellForTableView:(AFBCommonGoodsModel *)model{
-    //2数据
-//    UIAlertView *alerView =  [[UIAlertView alloc]initWithTitle:@"提示" message:@"确定删除这个商品吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-//    [alerView show];
+
     [self.shopCarView reloadData];
 }
 
@@ -226,16 +235,16 @@ static NSString *GoodsCell = @"goodsCell";
     else if(indexPath.section == 2){
         // 商品列表
         AFBShopCarGoodsCell * cell = [tableView dequeueReusableCellWithIdentifier:GoodsCell forIndexPath:indexPath];
+        [_goodsCells addObject:cell];
         if (self.shopModelList.count) {
             cell.model = self.shopModelList[indexPath.row];
-            cell.tableView = self.shopCarView;
+
             cell.delegate = self;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
     }
-    
     
     else if (indexPath.section == 3 && indexPath.row == 0){
         AFBCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CommentID forIndexPath:indexPath];
@@ -244,9 +253,12 @@ static NSString *GoodsCell = @"goodsCell";
         return cell;
     }
     else if (indexPath.section == 3 && indexPath.row == 1){
-        AFBAllSelCell *cell = [tableView dequeueReusableCellWithIdentifier:AllselID forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
+        _allSelCell = [tableView dequeueReusableCellWithIdentifier:AllselID forIndexPath:indexPath];
+        //设置买单cell的价格和全选的初始状态
+        _allSelCell.priceL = _ShopCarGoodsPrice;
+        _allSelCell.selectBut.selected = _ShopCarGoodisAllSelect;
+        _allSelCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return _allSelCell;
     }
     
     return [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
@@ -281,29 +293,24 @@ static NSString *GoodsCell = @"goodsCell";
 //MARK:cell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-//        NSLog(@"点击了第一个cell");
+
     }
     else if (indexPath.section == 1 && indexPath.row == 0){
-//        NSLog(@"点击了闪送超时");
+[self.tabBarController setSelectedIndex:1];
     }
     else if(indexPath.section == 1 && indexPath.row == 2){
         NSLog(@"点击凑单专区");
     }
     else if(indexPath.section == 2){
-        NSLog(@"点击了商品列表");
+
         AFBOrderGoodsDetailController *goodsDetailVC = [[AFBOrderGoodsDetailController alloc] init];
         goodsDetailVC.model = self.shopModelList[indexPath.row];
         [self.navigationController pushViewController:goodsDetailVC animated:YES];
     }
     else if(indexPath.section == 3 && indexPath.row == 0){
-        NSLog(@"点击了备注");
+      
         AFBCommentController *comVc = [[AFBCommentController alloc] init];
         
-        
-        //        comVc.myBlock = ^(NSString *str)
-        //        {
-        //            NSLog(@"%@",str);
-        //        };
         [self.navigationController pushViewController:comVc animated:YES];
         [self.navigationController hidesBottomBarWhenPushed];
         

@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *price;
-@property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 @property (weak, nonatomic) IBOutlet UILabel *hotLabel;
 @property (weak, nonatomic) IBOutlet UILabel *buyCountLabel;
 
@@ -28,18 +27,27 @@
 
 - (void)setModel:(AFBCommonGoodsModel *)model{
     _model = model;
-    self.selectBtn.selected = YES;
+
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeSelecked:) name:@"allSel" object:nil];
     
+    self.selectBtn.selected = model.isSelcet;
     self.buyCountLabel.text = @(model.buyCount).description;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:model.img]];
     self.nameLabel.text = model.name;
     CGFloat partner_price = [model.partner_price floatValue];
-    self.price.text = [NSString stringWithFormat:@"%0.2f",partner_price];
+    self.price.text = [NSString stringWithFormat:@"¥%0.2f",partner_price];
     
     [self.hotLabel.layer setBorderWidth:0.8];
     self.hotLabel.layer.borderColor = [UIColor redColor].CGColor;
     self.hotLabel.textColor = [UIColor redColor];
     self.hotLabel.layer.cornerRadius = 5;
+}
+
+- (void)changeSelecked:(NSNotification *)notification{
+    UIButton *sender = [notification object];
+//     = dic[@"sender"];
+    self.model.isSelcet = sender.selected;
+    self.selectBtn.selected = sender.selected;
 }
 
 - (void)awakeFromNib {
@@ -54,10 +62,10 @@
         return;
     }
   
-//    [self.delegate addGoodsForTableView];
+    [self.delegate returnAllPrice];
     [self.delegate reduceGoodsForTableView];
     self.buyCountLabel.text = @(self.model.buyCount).description;
-    [self notificationCenter];
+//    [self notificationCenter];
 }
 
 - (IBAction)clickSubBtn:(id)sender {
@@ -66,21 +74,25 @@
         NSLog(@"删除商品");
         [self.delegate removeCellForTableView:self.model];
     }
+    [self.delegate returnAllPrice];
     [self.delegate reduceGoodsForTableView];
     self.buyCountLabel.text = @(self.model.buyCount).description;
-    [self notificationCenter];
+
 }
 
-- (void)notificationCenter{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"allPrice" object:nil userInfo:@{@"call":@"changePrice"}];
-}
+
 
 - (IBAction)selectBtn:(id)sender {
-    if (self.model.isSelcet) {
-        
-    }else{
+    self.model.isSelcet = !self.model.isSelcet;
+    self.selectBtn.selected = !self.selectBtn.selected;
     
+    if (self.model.isSelcet) {
+        NSLog(@"选中了该商品");
+    }else{
+        NSLog(@"取消了该商品的选择");
     }
+    
+    [self.delegate seleckBtnChange:self];
 }
 
 

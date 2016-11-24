@@ -123,7 +123,7 @@
                 <outlet property="iconView" destination="fSz-WW-kkc" id="7qj-ad-6M3"/>
                 <outlet property="nameLabel" destination="7rX-2q-a2C" id="rbh-L9-NWn"/>
                 <outlet property="price" destination="PSy-hW-f5M" id="kpC-2N-h0Q"/>
-                <outlet property="selectBtn" destination="d2x-VF-U9X" id="nzo-fu-lLH"/>
+                <outlet property="selectBtn" destination="d2x-VF-U9X" id="puQ-zP-lBf"/>
             </connections>
             <point key="canvasLocation" x="35.5" y="-25"/>
         </view>

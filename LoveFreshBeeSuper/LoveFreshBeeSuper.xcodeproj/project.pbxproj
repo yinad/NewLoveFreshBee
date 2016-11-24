@@ -67,7 +67,6 @@
 		213462351DE2A918005E6F44 /* AFBShopCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 213462341DE2A918005E6F44 /* AFBShopCarController.m */; };
 		213462391DE2C09F005E6F44 /* AFBCouDanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 213462371DE2C09F005E6F44 /* AFBCouDanCell.m */; };
 		2134623A1DE2C09F005E6F44 /* AFBCouDanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 213462381DE2C09F005E6F44 /* AFBCouDanCell.xib */; };
-		2134623D1DE2D0B9005E6F44 /* AFBShopCarBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2134623C1DE2D0B9005E6F44 /* AFBShopCarBusinessModel.m */; };
 		213462401DE2EAC2005E6F44 /* AFBCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2134623F1DE2EAC2005E6F44 /* AFBCommentController.m */; };
 		213462441DE31685005E6F44 /* AFBCommentTopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 213462421DE31685005E6F44 /* AFBCommentTopListCell.m */; };
 		213462451DE31685005E6F44 /* AFBCommentTopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 213462431DE31685005E6F44 /* AFBCommentTopListCell.xib */; };
@@ -246,8 +245,6 @@
 		213462361DE2C09F005E6F44 /* AFBCouDanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBCouDanCell.h; sourceTree = "<group>"; };
 		213462371DE2C09F005E6F44 /* AFBCouDanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBCouDanCell.m; sourceTree = "<group>"; };
 		213462381DE2C09F005E6F44 /* AFBCouDanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AFBCouDanCell.xib; sourceTree = "<group>"; };
-		2134623B1DE2D0B9005E6F44 /* AFBShopCarBusinessModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBShopCarBusinessModel.h; sourceTree = "<group>"; };
-		2134623C1DE2D0B9005E6F44 /* AFBShopCarBusinessModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBShopCarBusinessModel.m; sourceTree = "<group>"; };
 		2134623E1DE2EAC2005E6F44 /* AFBCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBCommentController.h; sourceTree = "<group>"; };
 		2134623F1DE2EAC2005E6F44 /* AFBCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFBCommentController.m; sourceTree = "<group>"; };
 		213462411DE31685005E6F44 /* AFBCommentTopListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFBCommentTopListCell.h; sourceTree = "<group>"; };
@@ -647,8 +644,6 @@
 		213140761DE19958002F7787 /* ShopCar */ = {
 			isa = PBXGroup;
 			children = (
-				2134623B1DE2D0B9005E6F44 /* AFBShopCarBusinessModel.h */,
-				2134623C1DE2D0B9005E6F44 /* AFBShopCarBusinessModel.m */,
 				213462171DE2A8A4005E6F44 /* Views */,
 				213140771DE19958002F7787 /* Controllers */,
 			);
@@ -721,11 +716,6 @@
 		213462171DE2A8A4005E6F44 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				23DF57051DE60B4D00AEED56 /* AFBShopCarGoodsCell.h */,
-				23DF57061DE60B4D00AEED56 /* AFBShopCarGoodsCell.m */,
-				23DF57081DE60B5F00AEED56 /* AFBShopCarGoodsCell.xib */,
-				2134621B1DE2A8A4005E6F44 /* AFBAllSelCell.h */,
-				2134621C1DE2A8A4005E6F44 /* AFBAllSelCell.m */,
 				213462181DE2A8A4005E6F44 /* AFBAdressTimeCell.h */,
 				213462191DE2A8A4005E6F44 /* AFBAdressTimeCell.m */,
 				2134621A1DE2A8A4005E6F44 /* AFBAdressTimeCell.xib */,
@@ -745,6 +735,11 @@
 				213462411DE31685005E6F44 /* AFBCommentTopListCell.h */,
 				213462421DE31685005E6F44 /* AFBCommentTopListCell.m */,
 				213462431DE31685005E6F44 /* AFBCommentTopListCell.xib */,
+				23DF57051DE60B4D00AEED56 /* AFBShopCarGoodsCell.h */,
+				23DF57061DE60B4D00AEED56 /* AFBShopCarGoodsCell.m */,
+				23DF57081DE60B5F00AEED56 /* AFBShopCarGoodsCell.xib */,
+				2134621B1DE2A8A4005E6F44 /* AFBAllSelCell.h */,
+				2134621C1DE2A8A4005E6F44 /* AFBAllSelCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1041,7 +1036,6 @@
 				213462351DE2A918005E6F44 /* AFBShopCarController.m in Sources */,
 				213140B21DE19958002F7787 /* UILabel+Addition.m in Sources */,
 				2131409D1DE19958002F7787 /* AFBTabBarController.m in Sources */,
-				2134623D1DE2D0B9005E6F44 /* AFBShopCarBusinessModel.m in Sources */,
 				1B205B451DE1CEC700AC3863 /* AFBHomeFirstCell.m in Sources */,
 				2134622E1DE2A8A4005E6F44 /* AFBShopCarSupermarkerCell.m in Sources */,
 				213140B31DE19958002F7787 /* UIScreen+Addition.m in Sources */,
