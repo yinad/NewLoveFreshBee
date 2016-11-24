@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "AFBHomeThreeModel.h"
 #import <UIImageView+WebCache.h>
+#import "AFBCommonGoodsModel.h"
 @class AFBHomeThreeCell;
 
 @protocol AFBHomeThreeCellDelegate <NSObject>
 
-- (void)homeThreeCell:(AFBHomeThreeCell*)homeThreeCell withAddModel:(AFBHomeThreeModel *)Model withStartPoint:(CGPoint)startp;
+- (void)homeThreeCell:(AFBHomeThreeCell*)homeThreeCell withAddModel:(AFBCommonGoodsModel *)Model withStartPoint:(CGPoint)startp;
 
 @end
 @interface AFBHomeThreeCell : UICollectionViewCell
@@ -25,7 +26,7 @@
 @property(nonatomic,weak)UILabel *partner_price;
 @property(nonatomic,weak)UILabel *market_price;
 
-@property(nonatomic,strong)AFBHomeThreeModel *model;
+@property(nonatomic,strong)AFBCommonGoodsModel *model;
 //动画开始起点
 @property(nonatomic,assign)CGPoint startP;
 @property(nonatomic,weak)id<AFBHomeThreeCellDelegate> delegate;

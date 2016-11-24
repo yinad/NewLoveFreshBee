@@ -22,6 +22,7 @@
 #import "AFBOrderGoodsArrangeView.h"
 #import "AFBPriceArrangeControl.h"
 #import "AFBAnimatonManager.h"
+#import "UITabBar+AFBBage.h"
 
 
 #define kTopHeight 64
@@ -288,14 +289,15 @@ static NSString *rightHeader = @"rightHeader";
     }
 }
 
-
-
 //MARK:动画
 //动画实现
 - (void)homeThreeCell:(UIImageView *)OrderRightImageView withModel:(AFBCommonGoodsModel *)Model withStartPoint:(CGPoint)startp{
     AFBAnimatonManager *manager = [[AFBAnimatonManager alloc]init];
     [manager startAnimationWithStartPoint:startp imageView:OrderRightImageView size:CGRectMake(0, 0, 80, 80)];
     
+    AFBShopCart *shopCar = [AFBShopCart sharedShopCart];
+    //2数据
+    [self.tabBarController.tabBar showBadgeOnItemIndex:2 withBadge:[NSString stringWithFormat:@"%zd",[shopCar showGoodsListCount]]];
     
 }
 #pragma mark - 实现数据源方法

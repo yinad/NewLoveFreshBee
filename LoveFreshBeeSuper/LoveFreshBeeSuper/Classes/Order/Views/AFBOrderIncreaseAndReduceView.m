@@ -36,7 +36,7 @@
     
     if([_delegate respondsToSelector:@selector(minusPlusView:withCount:)]){
         
-        [_delegate minusPlusView:self withCount:self.goodsCount];
+        [_delegate minusPlusView:self withCount:_goodsCount];
     }
     
     

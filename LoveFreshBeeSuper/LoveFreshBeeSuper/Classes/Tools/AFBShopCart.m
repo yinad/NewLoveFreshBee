@@ -40,7 +40,7 @@ static AFBShopCart *_sharedShopCart = nil;
         //返回对应的model,确保操作的是购物车数组里的模型而不是新传入的模型
         AFBCommonGoodsModel* tempModel = [_sharedShopCart returnModel:model];
         tempModel.buyCount++;
-
+        NSLog(@"商品个数%zd",tempModel.buyCount);
     }else{
         [_sharedShopCart.goodsList addObject:model];
         model.buyCount = 1;
@@ -77,7 +77,7 @@ static AFBShopCart *_sharedShopCart = nil;
 - (NSInteger)showGoodsListCount{
     __block NSInteger listCount = 0;
     [_sharedShopCart.goodsList enumerateObjectsUsingBlock:^(AFBCommonGoodsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        listCount = obj.buyCount ++;
+        listCount += obj.buyCount;
     }];
     
     return listCount;
