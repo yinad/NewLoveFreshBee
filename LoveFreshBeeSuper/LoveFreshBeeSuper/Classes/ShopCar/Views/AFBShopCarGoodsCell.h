@@ -11,7 +11,7 @@
 @class AFBShopCarGoodsCell;
 @protocol AFBShopCarGoodscellDelegate <NSObject>
 
-- (void)removeCellForTableView;
+- (void)removeCellForTableView:(AFBCommonGoodsModel *)model;
 
 - (void)reduceGoodsForTableView;
 

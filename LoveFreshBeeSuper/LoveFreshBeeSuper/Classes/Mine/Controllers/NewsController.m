@@ -108,7 +108,7 @@ TwoTypeCellDegate
     [self.view addSubview:topView];
     
     // 2.tableView 的创建
-    UITableView *tableVIew = [[UITableView alloc] initWithFrame:CGRectMake(0, topViewH, kScreenWidth, kScreenHeight - topViewH - 49) style:UITableViewStyleGrouped];
+    UITableView *tableVIew = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     tableVIew.rowHeight = 120;
     tableVIew.delegate = self;
     tableVIew.dataSource = self;
@@ -116,6 +116,12 @@ TwoTypeCellDegate
     [tableVIew registerClass:[TwoTypeCell class] forCellReuseIdentifier:twoCell ];
     tableVIew.tableFooterView = [self creatFooterView];
     [self.view addSubview:tableVIew];
+    
+    [tableVIew mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(topView.mas_bottom);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(kScreenHeight - 200);
+    }];
 }
 #pragma mark - MineTopVIewDelegate
 // 实现箭头的代理方法
@@ -123,7 +129,7 @@ TwoTypeCellDegate
     
     UIViewController *vc = [[UIViewController alloc] init];
     vc.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController pushViewController:vc animated:YES];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 // 商品收藏 和店铺收藏的代理方法实现
 - (void)button:(UIButton *)btn ofMineTopVIewClicked:(MineTopVIew *)topView {

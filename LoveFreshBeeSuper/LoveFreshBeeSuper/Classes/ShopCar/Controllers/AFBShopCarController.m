@@ -156,14 +156,13 @@ static NSString *GoodsCell = @"goodsCell";
 }
 
 //MARK:cell的代理方法:删除当前行
-- (void)removeCellForTableView{
+- (void)removeCellForTableView:(AFBCommonGoodsModel *)model{
     //2数据
-    UIAlertView *alerView =  [[UIAlertView alloc]initWithTitle:@"提示" message:@"确定删除这个商品吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-    [alerView show];
-    
+//    UIAlertView *alerView =  [[UIAlertView alloc]initWithTitle:@"提示" message:@"确定删除这个商品吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+//    [alerView show];
     [self.shopCarView reloadData];
-
 }
+
 //MARK:点击加和减号的动画效果
 - (void)reduceGoodsForTableView{
     AFBShopCart *shopCar = [AFBShopCart sharedShopCart];
