@@ -18,6 +18,7 @@
 #import "AFBAllSelCell.h"
 #import "AFBCommentController.h"
 #import "AFBShopCarGoodsCell.h"
+#import "AFBOrderGoodsDetailController.h"
 
 @class AFBCommonGoodsModel;
 static NSString *FirstID = @"fis_id";
@@ -266,6 +267,9 @@ static NSString *GoodsCell = @"goodsCell";
     }
     else if(indexPath.section == 2){
         NSLog(@"点击了商品列表");
+        AFBOrderGoodsDetailController *goodsDetailVC = [[AFBOrderGoodsDetailController alloc] init];
+        goodsDetailVC.model = self.shopModelList[indexPath.row];
+        [self.navigationController pushViewController:goodsDetailVC animated:YES];
     }
     else if(indexPath.section == 3 && indexPath.row == 0){
         NSLog(@"点击了备注");
