@@ -18,6 +18,8 @@
     return self;
 }
 
+
+
 - (void)setupUI{
     
     self.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 49, [UIScreen mainScreen].bounds.size.width, 49);
@@ -34,7 +36,7 @@
     [self addSubview:addDoodsLab];
     
     //添加减少商品的view
-    AFBOrderIncreaseAndReduceView * increaseAndReduceView = [[[UINib nibWithNibName:@"AFBOrderIncreaseAndReduceView" bundle:nil] instantiateWithOwner:nil options:0] lastObject];
+    AFBOrderIncreaseAndReduceView * increaseAndReduceView = [AFBOrderIncreaseAndReduceView orderIncreaseAndReduceView];
     self.increaseAndReduceView = increaseAndReduceView;
     [self addSubview:increaseAndReduceView];
     increaseAndReduceView.delegate = self;
@@ -52,6 +54,8 @@
     goodsCountLab.textColor = [UIColor whiteColor];
     goodsCountLab.font = [UIFont boldSystemFontOfSize:11];
     goodsCountLab.textAlignment = UITextAlignmentCenter;
+    goodsCountLab.text = @(self.model.buyCount).description;
+    
     self.goodsCountLab = goodsCountLab;
     goodsCountLab.hidden = YES;
     [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
@@ -102,12 +106,23 @@
 //    
 //}
 //
+
+
 //实现加减View的代理方法
 - (void)minusPlusView:(AFBOrderIncreaseAndReduceView *)iarView withCount:(NSInteger)goodsCount{
+    
     _goodsCount = goodsCount;
-    _goodsCountLab.text = @(self.goodsCount).description;
+    _goodsCountLab.text = @(iarView.model.buyCount).description;
     self.goodsCountLab.hidden = (self.goodsCount == 0);
     
+}
+
+- (void)setModel:(AFBCommonGoodsModel *)model{
+    _model = model;
+    if (model.buyCount != 0) {
+        self.goodsCountLab.text = @(model.buyCount).description;
+        self.goodsCountLab.hidden = NO;
+    }
 }
 
 
