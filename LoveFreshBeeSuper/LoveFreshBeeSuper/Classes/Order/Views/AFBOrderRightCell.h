@@ -13,7 +13,7 @@
 @protocol AFBOrderRightCellDelegate <NSObject>
 
 - (void)homeThreeCell:(UIImageView *)OrderRightImageView withModel:(AFBCommonGoodsModel *)Model withStartPoint:(CGPoint)startp;
-
+- (void)homeThreeCell:(AFBOrderRightCell *)OrderRightCell;
 @end
 
 @interface AFBOrderRightCell : UITableViewCell

@@ -12,7 +12,7 @@ static UILabel *_label;
 
 @implementation UITabBar (AFBBage)
 - (void)showBadgeOnItemIndex:(int)index withBadge:(NSString *)badge{
-    if (!_label) {
+//    if (!_label) {
         //移除之前的小红点
         [self removeBadgeOnItemIndex:index];
         //新建小红点
@@ -33,7 +33,7 @@ static UILabel *_label;
         badgeView.font = [UIFont boldSystemFontOfSize:11];
         badgeView.textAlignment = UITextAlignmentCenter;
         [self addSubview:badgeView];
-    }
+//    }
     
     
     //赋值
@@ -46,7 +46,6 @@ static UILabel *_label;
     
 }
 - (void)hideBadgeOnItemIndex:(int)index{
-    
     //移除小红点
     [self removeBadgeOnItemIndex:index];
     
@@ -55,9 +54,9 @@ static UILabel *_label;
 - (void)removeBadgeOnItemIndex:(int)index{
     
     //按照tag值进行移除
-    for (UIView *subView in self.subviews) {
+    for (UILabel *subView in self.subviews) {
         
-        if (subView.tag == 888+index) {
+        if (subView.tag == index) {
             
             [subView removeFromSuperview];
             

@@ -65,8 +65,10 @@
         if ([_delegate respondsToSelector:@selector(homeThreeCell:withModel:withStartPoint:)]) {
             [_delegate homeThreeCell:self.iconView withModel:nil withStartPoint:self.startP];
         }
-        
     }else{
+        if ([_delegate respondsToSelector:@selector(homeThreeCell:)]) {
+            [_delegate homeThreeCell:self];
+        }
         
     }
 }

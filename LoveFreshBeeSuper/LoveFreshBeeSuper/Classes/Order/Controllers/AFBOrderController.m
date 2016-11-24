@@ -300,6 +300,15 @@ static NSString *rightHeader = @"rightHeader";
     [self.tabBarController.tabBar showBadgeOnItemIndex:2 withBadge:[NSString stringWithFormat:@"%zd",[shopCar showGoodsListCount]]];
     
 }
+//MARK:点击减号的代理方法
+- (void)homeThreeCell:(AFBOrderRightCell *)OrderRightCell{
+    AFBShopCart *shopCar = [AFBShopCart sharedShopCart];
+    //2数据
+    [self.tabBarController.tabBar showBadgeOnItemIndex:2 withBadge:[NSString stringWithFormat:@"%zd",[shopCar showGoodsListCount]]];
+    if ([shopCar showGoodsListCount] == 0) {
+        [self.tabBarController.tabBar hideBadgeOnItemIndex:2];
+    }
+}
 #pragma mark - 实现数据源方法
 //组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
