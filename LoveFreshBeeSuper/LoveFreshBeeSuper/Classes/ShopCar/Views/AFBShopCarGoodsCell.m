@@ -60,12 +60,13 @@
     _ShopCarSub(self.model);
     if (self.model.buyCount == 0) {
         NSLog(@"删除商品");
-        [self.delegate removeCellForTableView];
+        [self.delegate removeCellForTableView:self.model];
     }
     [self.delegate reduceGoodsForTableView];
     self.buyCountLabel.text = @(self.model.buyCount).description;
     
 }
+
 - (IBAction)selectBtn:(id)sender {
 }
 
