@@ -21,7 +21,7 @@
                         <constraint firstAttribute="height" constant="20" id="i0M-Uu-Mj1"/>
                         <constraint firstAttribute="width" constant="20" id="sEp-XB-NaH"/>
                     </constraints>
-                    <state key="normal">
+                    <state key="normal" image="v2_noselected">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" image="v2_selected">
@@ -130,6 +130,7 @@
     </objects>
     <resources>
         <image name="v2_increased" width="30" height="30"/>
+        <image name="v2_noselected" width="16" height="16"/>
         <image name="v2_reduced" width="30" height="30"/>
         <image name="v2_selected" width="16" height="16"/>
     </resources>
